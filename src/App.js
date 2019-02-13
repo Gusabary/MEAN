@@ -7,6 +7,7 @@ import theme from './theme'
 import SignIn from './Components/SignIn'
 import SignUp from './Components/SignUp'
 import TopBar from './Components/TopBar'
+import Posts from './Components/Posts/index'
 
 class App extends Component {
   render() {
@@ -19,6 +20,7 @@ class App extends Component {
             <Route exact path="/Detail" component={Detail} />
             <Route exact path="/SignIn" component={SignIn} />
             <Route exact path="/SignUp" component={SignUp} />
+            <Route exact path="/Posts" component={Posts} />
           </div>
         </BrowserRouter>
       </MuiThemeProvider>

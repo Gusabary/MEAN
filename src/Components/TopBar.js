@@ -35,7 +35,9 @@ function TopBar(props) {
             <AppBar className={classes.bar}>
                 <Toolbar>
                     <Typography variant="h5" className={classes.title}>
-                        MEAN
+                        <a href="Posts">
+                            MEAN
+                        </a>
                     </Typography>
                     <div className={classes.button}>
                         <Home className={classes.icon} />
