@@ -4,9 +4,9 @@ import Home from './Home'
 import Detail from './Detail'
 import { MuiThemeProvider } from '@material-ui/core';
 import theme from './theme'
-import SignIn from './SignIn'
-import SignUp from './SignUp'
-import TopBar from './TopBar'
+import SignIn from './Components/SignIn'
+import SignUp from './Components/SignUp'
+import TopBar from './Components/TopBar'
 
 class App extends Component {
   render() {

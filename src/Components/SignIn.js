@@ -58,7 +58,9 @@ class SignIn extends React.Component {
                         variant="contained"
                         className={classes.button}
                     >
-                        Sign In
+                        <Typography>
+                            Sign In
+                        </Typography>
                     </Button>
                 </Paper>
             </React.Fragment>

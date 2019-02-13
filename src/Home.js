@@ -1,5 +1,5 @@
 import React from 'react'
-import TopBar from './TopBar'
+import TopBar from './Components/TopBar'
 
 class Home extends React.Component {
     render() {
