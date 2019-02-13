@@ -7,13 +7,15 @@ import Toolbar from '@material-ui/core/Toolbar'
 import Arrows from './Arrows';
 import Add from '@material-ui/icons/Add'
 
-/*const styles = theme => ({
-
-});*/
+const styles = theme => ({
+    root: {
+        marginTop: theme.spacing.unit*10,
+    },
+});
 
 class Posts extends React.Component {
     render() {
-        //const { classes } = this.props;
+        const { classes } = this.props;
         return (
             <React.Fragment>
                 <Post />
@@ -33,4 +35,4 @@ class Posts extends React.Component {
     }
 }
 
-export default Posts;
+export default withStyles(styles)(Posts);

@@ -4,7 +4,7 @@ import AccountCircle from '@material-ui/icons/AccountCircle'
 
 const styles = theme => ({
     paper: {
-        marginTop: theme.spacing.unit * 18,
+        marginTop: theme.spacing.unit * 10,
         marginRight: theme.spacing.unit * 55,
         marginLeft: theme.spacing.unit * 55,
         paddingTop: theme.spacing.unit * 5,

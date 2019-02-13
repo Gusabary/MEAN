@@ -19,16 +19,17 @@ class Post extends React.Component {
     render() {
         const { classes } = this.props;
         return (
-            <ExpansionPanel className={classes.firstPost}>
-                <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
-                    <Typography className={classes.heading}>Expansion Panel</Typography>
-                </ExpansionPanelSummary>
-                <ExpansionPanelDetails>
-                    <Typography>
-                        details
-	                </Typography>
-                </ExpansionPanelDetails>
-            </ExpansionPanel>
+            <React.Fragment>
+                
+                <ExpansionPanel className={classes.firstPost}>
+                    <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
+                        1
+                    </ExpansionPanelSummary>
+                    <ExpansionPanelDetails>
+                        2
+                    </ExpansionPanelDetails>
+                </ExpansionPanel>
+            </React.Fragment>
         );
     }
 }

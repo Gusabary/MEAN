@@ -14,11 +14,9 @@ class App extends React.Component {
   render() {
     return (
       <MuiThemeProvider theme={theme}>
+        <Header />
         <BrowserRouter>
           <div>
-            p
-            <Header />
-            p
             <Route exact path="/" component={Home} />
             <Route exact path="/Detail" component={Detail} />
             <Route exact path="/SignIn" component={SignIn} />

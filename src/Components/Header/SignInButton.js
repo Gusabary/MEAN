@@ -15,7 +15,7 @@ const styles = theme => ({
 
 class SignInButton extends React.Component {
     render() {
-        const { classes } = this.props;
+        const { classes} = this.props;
         return (
             <React.Fragment>
                 <AccountCircle className={classes.icon} />

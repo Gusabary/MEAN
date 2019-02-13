@@ -22,7 +22,7 @@ class SignUpButton extends React.Component {
                 <a href="SignUp">
                     <Button className={classes.label}>
                         Sign Up
-                </Button>
+                    </Button>
                 </a>
             </React.Fragment>
         );

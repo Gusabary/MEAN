@@ -7,6 +7,7 @@ import SignInButton from './SignInButton';
 import SignUpButton from './SignUpButton';
 import AddPostButton from './AddPostButton';
 import LogOutButton from './LogOutButton';
+import { Button } from '@material-ui/core';
 
 const styles = theme => ({
     bar: {
@@ -14,7 +15,7 @@ const styles = theme => ({
     },
 
     buttons: {
-        marginLeft: theme.spacing.unit * 110,
+        marginLeft: theme.spacing.unit * 108,
     },
 
 })
@@ -36,12 +37,15 @@ class Header extends React.Component {
         );
         return (
             <React.Fragment>
-                <AppBar className={classes.bar}>
+                <AppBar position="static" className={classes.bar}>
                     <Toolbar>
                         <HomeButton />
                         {whenLoggedOut}
                     </Toolbar>
                 </AppBar>
+
+
+
             </React.Fragment>
         );
     }
