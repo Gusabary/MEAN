@@ -33,7 +33,6 @@ class SignIn extends React.Component {
         const { classes } = this.props;
         return (
             <React.Fragment>
-
                 <Paper className={classes.paper}>
                     <Toolbar>
                         <AccountCircle fontSize="large" />

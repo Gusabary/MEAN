@@ -1,5 +1,5 @@
 import React from 'react'
-import { Paper, withStyles, Typography, Toolbar, TextField, Button } from '@material-ui/core';
+import { Paper, withStyles, Typography, Toolbar, TextField, Button,Link } from '@material-ui/core';
 import AccountCircle from '@material-ui/icons/AccountCircle'
 
 const styles = theme => ({
@@ -26,6 +26,9 @@ const styles = theme => ({
     button: {
         marginTop: theme.spacing.unit * 7,
     },
+    link: {
+        fontSize: 15,
+    },
 });
 
 class SignUp extends React.Component {
@@ -33,7 +36,6 @@ class SignUp extends React.Component {
         const { classes } = this.props;
         return (
             <React.Fragment>
-
                 <Paper className={classes.paper}>
                     <Toolbar>
                         <AccountCircle fontSize="large" />
@@ -41,6 +43,11 @@ class SignUp extends React.Component {
                             Sign Up
                         </Typography>
                     </Toolbar>
+                    <a href="SignIn">
+                        <Typography className={classes.link}>
+                            Have an account?
+                        </Typography>
+                    </a>
                     <TextField
                         type="email"
                         label="Email Address"

@@ -6,17 +6,17 @@ import { MuiThemeProvider } from '@material-ui/core';
 import theme from './theme'
 import SignIn from './Components/SignIn'
 import SignUp from './Components/SignUp'
-import TopBar from './Components/TopBar'
+import Header from './Components/Header/index'
 import Posts from './Components/Posts/index'
 import New from './Components/New/index'
 
-class App extends Component {
+class App extends React.Component {
   render() {
     return (
       <MuiThemeProvider theme={theme}>
         <BrowserRouter>
           <div>
-            <TopBar />
+            <Header />
             <Route exact path="/" component={Home} />
             <Route exact path="/Detail" component={Detail} />
             <Route exact path="/SignIn" component={SignIn} />
