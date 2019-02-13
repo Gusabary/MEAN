@@ -20,7 +20,7 @@ class SignInButton extends React.Component {
             <React.Fragment>
                 <AccountCircle className={classes.icon} />
                 <a href="SignIn">
-                    <Button className={classes.label} onClick={this.props.onClick}>
+                    <Button className={classes.label}>
                         Sign In
                     </Button>
                 </a>

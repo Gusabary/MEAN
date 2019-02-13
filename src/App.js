@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { BrowserRouter, Route } from 'react-router-dom';
 import Home from './Home'
 import Detail from './Detail'
@@ -16,7 +16,9 @@ class App extends React.Component {
       <MuiThemeProvider theme={theme}>
         <BrowserRouter>
           <div>
+            p
             <Header />
+            p
             <Route exact path="/" component={Home} />
             <Route exact path="/Detail" component={Detail} />
             <Route exact path="/SignIn" component={SignIn} />

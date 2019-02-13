@@ -15,12 +15,12 @@ const styles = theme => ({
 
 class LogOutButton extends React.Component {
     render() {
-        const { classes, onClick } = this.props;
+        const { classes } = this.props;
         return (
             <React.Fragment>
                 <AccountCircle className={classes.icon} />
                 <a href="SignUp">
-                    <Button className={classes.label} onClick={onClick}>
+                    <Button className={classes.label}>
                         Log Out
                     </Button>
                 </a>
