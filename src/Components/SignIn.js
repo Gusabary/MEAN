@@ -1,6 +1,7 @@
 import React from 'react'
 import { Paper, withStyles, Typography, Toolbar, TextField, Button } from '@material-ui/core';
 import AccountCircle from '@material-ui/icons/AccountCircle'
+import { connect } from 'react-redux'
 
 const styles = theme => ({
     paper: {
@@ -28,7 +29,20 @@ const styles = theme => ({
     },
 });
 
+const mapDispatchToProps = dispatch => ({
+    onSubmit: type =>
+        dispatch({ type }),
+})
+
 class SignIn extends React.Component {
+  constructor(props) {
+    super(props);
+
+    this.submitForm = ev => {
+      ev.preventDefault();
+      this.props.onSubmit("LOGIN");
+    };
+  }
     render() {
         const { classes } = this.props;
         return (
@@ -40,31 +54,34 @@ class SignIn extends React.Component {
                             Sign In
                         </Typography>
                     </Toolbar>
-                    <TextField
-                        type="email"
-                        label="Email Address"
-                        className={classes.textField}
-                        required
-                    />
-                    <TextField
-                        type="password"
-                        label="Password"
-                        className={classes.textField}
-                        required
-                    />
-                    <Button
-                        type="submit"
-                        variant="contained"
-                        className={classes.button}
-                    >
-                        <Typography>
-                            Sign In
+                    
+                        <TextField
+                            type="email"
+                            label="Email Address"
+                            className={classes.textField}
+                            required
+                        />
+                        <TextField
+                            type="password"
+                            label="Password"
+                            className={classes.textField}
+                            required
+                        /><form onSubmit={this.submitForm}>
+                        <Button
+                            type="submit"
+                            variant="contained"
+                            className={classes.button}
+                            
+                        >
+                            <Typography>
+                                Sign In
                         </Typography>
-                    </Button>
+                        </Button>
+                    </form>
                 </Paper>
             </React.Fragment>
         )
     }
 }
 
-export default withStyles(styles)(SignIn);
+export default connect(()=>({}),mapDispatchToProps)(withStyles(styles)(SignIn));
