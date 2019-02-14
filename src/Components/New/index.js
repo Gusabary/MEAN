@@ -9,7 +9,7 @@ const styles = theme => ({
     root: {
         width: '82%',
         marginLeft: '9%',
-        marginTop: theme.spacing.unit * 10,
+        marginTop: theme.spacing.unit * 3,
     },
 });
 
