@@ -9514,7 +9514,7 @@ superagent-promise@^1.1.0:
   resolved "http://registry.npm.taobao.org/superagent-promise/download/superagent-promise-1.1.0.tgz#baf22d8bbdd439a9b07dd10f8c08f54fe2503533"
   integrity sha1-uvIti73UOamwfdEPjAj1T+JQNTM=
 
-superagent@^4.0.0:
+superagent@^4.1.0:
   version "4.1.0"
   resolved "http://registry.npm.taobao.org/superagent/download/superagent-4.1.0.tgz#c465c2de41df2b8d05c165cbe403e280790cdfd5"
   integrity sha1-xGXC3kHfK40FwWXL5APigHkM39U=

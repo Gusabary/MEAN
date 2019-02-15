@@ -3,19 +3,19 @@ import LoggedInView from './LoggedInView'
 import LoggedOutView from './LoggedOutView'
 import { connect } from 'react-redux';
 
-const mapDispatchToProps = dispatch => ({
+/*const mapDispatchToProps = dispatch => ({
     onClick: type =>
         dispatch({ type }),
-})
+})*/
 
 class Header extends React.Component {
     render() {
-        const { isLoggedIn } = this.props;
+        console.log(this.props.userId);
         return (
             <React.Fragment>  
-                {isLoggedIn ? <LoggedInView onClick={()=>this.props.onClick("LOGOUT")} /> : <LoggedOutView />}
+                {this.props.userId ? <LoggedInView /> : <LoggedOutView />}
             </React.Fragment>
         );
     }
 }
-export default connect(()=>({}),mapDispatchToProps)(Header);
+export default (Header);

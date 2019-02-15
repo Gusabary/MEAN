@@ -33,13 +33,13 @@ class LoggedInView extends React.Component {
                         <Link href="SignIn">
                             <Button className={classes.label}>
                                 Sign In
-                        </Button>
+                            </Button>
                         </Link>
                         <AccountCircle className={classes.icon} />
                         <Link href="SignUp">
                             <Button onClick={this.props.onClick} className={classes.label}>
                                 Sign Up
-                        </Button>
+                            </Button>
                         </Link>
                     </div>
                 </Toolbar>

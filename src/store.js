@@ -1,11 +1,11 @@
 import { createStore, combineReducers } from 'redux';
-import log from './reducers/log';
+import user from './reducers/user';
 
   
 const reducer = combineReducers({
-    log,
+    user,
 });
   
-const store = createStore(reducer, {});
+const store = createStore(reducer, { user: { userId: 1 } });
 
 export default store;
