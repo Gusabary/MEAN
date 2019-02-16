@@ -30,9 +30,15 @@ const styles = theme => ({
     },
 });
 
+const mapStateToProps = state => ({
+    redirectTo: state.common.redirectTo,
+})
+
 const mapDispatchToProps = dispatch => ({
-    onSubmit: (email, password) => 
+    onSubmit: (email, password) =>
         dispatch({ type: 'SIGN_IN', payload: agent.User.signIn(email, password) }),
+    onRedirect: () =>
+        dispatch({ type: 'REDIRECTED' }),
 })
 
 class SignIn extends React.Component {
@@ -68,6 +74,13 @@ class SignIn extends React.Component {
         this.props.onSubmit(email, password);
     }
 
+    componentWillReceiveProps(nextProps) {
+        if (nextProps.redirectTo) {
+            this.props.history.push(nextProps.redirectTo);
+            this.props.onRedirect();
+        }
+    }
+
     render() {
         const { classes } = this.props;
         return (
@@ -87,7 +100,7 @@ class SignIn extends React.Component {
                         value={this.state.email}
                         onChange={this.handleEmailChange}
                         required
-                        
+
                     />
                     <TextField
                         type="password"
@@ -96,7 +109,7 @@ class SignIn extends React.Component {
                         value={this.state.password}
                         onChange={this.handlePasswordChange}
                         required
-                        
+
                     /><form onSubmit={this.handleSubmit}>
                         <Button
                             type="submit"
@@ -114,4 +127,4 @@ class SignIn extends React.Component {
     }
 }
 
-export default connect(() => ({}), mapDispatchToProps)(withStyles(styles)(SignIn));
+export default connect(mapStateToProps, mapDispatchToProps)(withStyles(styles)(SignIn));
