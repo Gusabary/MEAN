@@ -4,6 +4,7 @@ import Title from './Title'
 import Image from './Image'
 import Content from './Content'
 import Save from './Save'
+import { connect } from 'react-redux';
 
 const styles = theme => ({
     root: {
@@ -13,9 +14,14 @@ const styles = theme => ({
     },
 });
 
+const mapStateToProps = state => ({
+    userId: state.user.userId,
+})
+
 class New extends React.Component {
     render() {
         const { classes } = this.props;
+        console.log(this.props.userId);
         return (
             <React.Fragment>
                 <Paper className={classes.root}>
@@ -29,4 +35,4 @@ class New extends React.Component {
     }
 }
 
-export default withStyles(styles)(New);
+export default connect(mapStateToProps)(withStyles(styles)(New));

@@ -10,7 +10,7 @@ import { connect } from 'react-redux';
 
 class Header extends React.Component {
     render() {
-        console.log(this.props.userId);
+        //console.log(this.props.userId);
         return (
             <React.Fragment>  
                 {this.props.userId ? <LoggedInView /> : <LoggedOutView />}

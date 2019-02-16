@@ -1,7 +1,9 @@
 import React from 'react';
-import { Link, withStyles, Button, AppBar, Toolbar } from '@material-ui/core'
+import { withStyles, Button, AppBar, Toolbar } from '@material-ui/core'
 import AccountCircle from '@material-ui/icons/AccountCircle'
 import HomeButton from './HomeButton';
+import { connect } from 'react-redux';
+import {Link} from 'react-router-dom'
 
 const styles = theme => ({
     icon: {
@@ -21,8 +23,39 @@ const styles = theme => ({
     },
 })
 
+const mapStateToProps = state => ({
+    redirectTo: state.common.redirectTo,
+    //userId: state.user.userId,
+})
+
+const mapDispatchToProps = dispatch => ({
+    onLogOut: () =>
+        dispatch({ type: 'LOG_OUT' }),
+    onRedirect: () =>
+        dispatch({type: 'REDIRECTED'}),
+})
+
 class LoggedInView extends React.Component {
+    constructor(props) {
+        super(props);
+        this.handleClick = this.handleClick.bind(this);
+    }
+
+    handleClick() {
+        this.props.onLogOut();
+    }
+
+    componentWillReceiveProps(nextProps) {
+        console.log(this.props.redirectTo);
+        console.log(nextProps.redirectTo)
+        if (nextProps.redirectTo) {
+            this.props.history.push(nextProps.redirectTo);
+            this.props.onRedirect();
+        }
+    }
+
     render() {
+        //console.log(this.props.userId);
         const { classes } = this.props;
         return (
             <AppBar position="static" className={classes.bar}>
@@ -30,17 +63,15 @@ class LoggedInView extends React.Component {
                     <HomeButton />
                     <div className={classes.buttons}>
                         <AccountCircle className={classes.icon} />
-                        <Link href="New">
+                        <Link to="New">
                             <Button className={classes.label}>
                                 Add Post
-                        </Button>
+                            </Button>
                         </Link>
                         <AccountCircle className={classes.icon} />
-                        <Link href="SignUp">
-                            <Button onClick={this.props.onClick} className={classes.label}>
-                                Log Out
+                        <Button onClick={this.handleClick} className={classes.label}>
+                            Log Out
                         </Button>
-                        </Link>
                     </div>
                 </Toolbar>
             </AppBar>
@@ -48,4 +79,4 @@ class LoggedInView extends React.Component {
     }
 }
 
-export default withStyles(styles)(LoggedInView);
+export default connect(mapStateToProps,mapDispatchToProps)(withStyles(styles)(LoggedInView));

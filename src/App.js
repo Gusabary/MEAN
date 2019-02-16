@@ -17,9 +17,9 @@ class App extends React.Component {
     //console.log(this.props);
     return (
       <React.Fragment>
-          <Header userId={this.props.userId} />
           <BrowserRouter>
             <div>
+              <Header userId={this.props.userId} />
               <Route exact path="/" component={Home} />
               <Route exact path="/SignIn" component={SignIn} />
               <Route exact path="/SignUp" component={SignUp} />

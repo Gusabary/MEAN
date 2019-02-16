@@ -1,5 +1,6 @@
 import React from 'react';
-import { Link, withStyles, Button, AppBar, Toolbar } from '@material-ui/core'
+import { withStyles, Button, AppBar, Toolbar } from '@material-ui/core'
+import {Link} from 'react-router-dom'
 import AccountCircle from '@material-ui/icons/AccountCircle'
 import HomeButton from './HomeButton';
 
@@ -30,13 +31,13 @@ class LoggedInView extends React.Component {
                     <HomeButton />
                     <div className={classes.buttons}>
                         <AccountCircle className={classes.icon} />
-                        <Link href="SignIn">
+                        <Link to="SignIn">
                             <Button className={classes.label}>
                                 Sign In
                             </Button>
                         </Link>
                         <AccountCircle className={classes.icon} />
-                        <Link href="SignUp">
+                        <Link to="SignUp">
                             <Button onClick={this.props.onClick} className={classes.label}>
                                 Sign Up
                             </Button>
