@@ -5,14 +5,14 @@ const defaultState = {
 
 const common = (state = defaultState, action) => {
     switch (action.type) {
-        case 'SIGN_IN':
-            return {
-                redirectTo: '/Posts',
+        case 'SIGN_IN'://console.log(1);
+            return {    
+                redirectTo: '/',
             }
         case 'LOG_OUT':
             //console.log('in');
             return {
-                redirectTo: '/SignIn',
+                redirectTo: '/',
             }
         case 'REDIRECTED':
             return {

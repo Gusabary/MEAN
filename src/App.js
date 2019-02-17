@@ -1,10 +1,9 @@
 import React from 'react';
 import { BrowserRouter, Route } from 'react-router-dom';
-import Home from './Home'
+import Home from './Components/Posts/index'
 import SignIn from './Components/SignIn'
 import SignUp from './Components/SignUp'
 import Header from './Components/Header/index'
-import Posts from './Components/Posts/index'
 import New from './Components/New/index'
 import { connect } from 'react-redux';
 
@@ -19,11 +18,10 @@ class App extends React.Component {
       <React.Fragment>
           <BrowserRouter>
             <div>
-              <Header userId={this.props.userId} />
+              <Header />
               <Route exact path="/" component={Home} />
               <Route exact path="/SignIn" component={SignIn} />
               <Route exact path="/SignUp" component={SignUp} />
-              <Route exact path="/Posts" component={Posts} />
               <Route exact path="/New" component={New} />
             </div>
           </BrowserRouter>

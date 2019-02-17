@@ -2,7 +2,12 @@ const superagent = require('superagent');
 
 const API_ROOT = 'http://meandemo-env.2ammmpcvep.ap-southeast-1.elasticbeanstalk.com';
 
-const responseBody = res => res.body;
+const responseBody = res => res.body
+
+const handleError = err => {
+    //console.log(err.message);
+    alert('Incorrect email or password!');
+}
 
 const requests = {
     get: url =>
@@ -10,7 +15,7 @@ const requests = {
     del: url =>
         superagent.del(`${API_ROOT}${url}`).then(responseBody),
     post: (url, body) =>
-        superagent.post(`${API_ROOT}${url}`).send(body).then(responseBody),
+        superagent.post(`${API_ROOT}${url}`).send(body).then(responseBody).catch(handleError),
     put: (url, body) =>
         superagent.put(`${API_ROOT}${url}`).send(body).then(responseBody)
 };
@@ -18,8 +23,8 @@ const requests = {
 const User = {
     signUp: (email, password) =>
         requests.post('/api/user/signup', { email, password }),
-    signIn: (email, password) => 
-        requests.post('/api/user/login', { email, password }),      
+    signIn: async (email, password) =>
+        requests.post('/api/user/login', { email, password }),
 }
 
 /*const Auth = {

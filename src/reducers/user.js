@@ -10,9 +10,7 @@ const user = (state = {}, action) => {
             }
         case 'LOG_OUT':
             //console.log('ha');
-            return {
-                userId: state.userId,
-            }
+            return {}
         default:
             return state;
     }

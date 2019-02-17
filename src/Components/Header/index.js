@@ -3,10 +3,9 @@ import LoggedInView from './LoggedInView'
 import LoggedOutView from './LoggedOutView'
 import { connect } from 'react-redux';
 
-/*const mapDispatchToProps = dispatch => ({
-    onClick: type =>
-        dispatch({ type }),
-})*/
+const mapStateToProps = state => ({
+    userId: state.user.userId,
+})
 
 class Header extends React.Component {
     render() {
@@ -18,4 +17,4 @@ class Header extends React.Component {
         );
     }
 }
-export default (Header);
+export default connect(mapStateToProps)(Header);

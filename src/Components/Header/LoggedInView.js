@@ -47,7 +47,8 @@ class LoggedInView extends React.Component {
 
     componentWillReceiveProps(nextProps) {
         console.log(this.props.redirectTo);
-        console.log(nextProps.redirectTo)
+        console.log(nextProps.redirectTo);
+        //console.log(this.props.userId);
         if (nextProps.redirectTo) {
             this.props.history.push(nextProps.redirectTo);
             this.props.onRedirect();
