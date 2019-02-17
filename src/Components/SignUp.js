@@ -1,6 +1,9 @@
 import React from 'react'
-import { Paper, withStyles, Typography, Toolbar, TextField, Button,Link } from '@material-ui/core';
+import { Paper, withStyles, Typography, Toolbar, TextField, Button } from '@material-ui/core';
 import AccountCircle from '@material-ui/icons/AccountCircle'
+import { connect } from 'react-redux'
+import agent from '../agent'
+import { Link } from 'react-router-dom'
 
 const styles = theme => ({
     paper: {
@@ -31,7 +34,57 @@ const styles = theme => ({
     },
 });
 
+const mapStateToProps = state => ({
+    redirectTo: state.common.redirectTo,
+})
+
+const mapDispatchToProps = dispatch => ({
+    onSubmit: (email, password) =>
+        dispatch({ type: 'SIGN_UP', payload: agent.User.signUp(email, password) }),
+    onRedirect: () =>
+        dispatch({ type: 'REDIRECTED' }),
+})
+
 class SignUp extends React.Component {
+    constructor(props) {
+        super(props);
+
+        this.state = {
+            email: '',
+            password: '',
+        }
+
+        this.handleEmailChange = this.handleEmailChange.bind(this);
+        this.handlePasswordChange = this.handlePasswordChange.bind(this);
+        this.handleSubmit = this.handleSubmit.bind(this);
+    }
+
+    handleEmailChange(event) {
+        this.setState({
+            email: event.target.value,
+        });
+    }
+
+    handlePasswordChange(event) {
+        this.setState({
+            password: event.target.value,
+        });
+    }
+
+    handleSubmit(event) {
+        event.preventDefault();
+        const { email, password } = this.state;
+        this.props.onSubmit(email, password);
+    }
+
+    componentWillReceiveProps(nextProps) {
+        //console.log(this.props.redirectTo);
+        //console.log(nextProps.redirectTo);
+        if (nextProps.redirectTo) {
+            this.props.history.push(nextProps.redirectTo);
+            this.props.onRedirect();
+        }
+    }
     render() {
         const { classes } = this.props;
         return (
@@ -43,36 +96,40 @@ class SignUp extends React.Component {
                             Sign Up
                         </Typography>
                     </Toolbar>
-                    <a href="SignIn">
+                    <Link to="SignIn">
                         <Typography className={classes.link}>
                             Have an account?
                         </Typography>
-                    </a>
+                    </Link>
                     <TextField
                         type="email"
                         label="Email Address"
                         className={classes.textField}
+                        value={this.state.email}
+                        onChange={this.handleEmailChange}
                         required
                     />
                     <TextField
                         type="password"
                         label="Password"
                         className={classes.textField}
+                        value={this.state.password}
+                        onChange={this.handlePasswordChange}
                         required
-                    />
-                    <Button
-                        type="submit"
-                        variant="contained"
-                        className={classes.button}
-                    >
-                        <Typography>
-                            Sign Up
+                    /><form onSubmit={this.handleSubmit}>
+                        <Button
+                            type="submit"
+                            variant="contained"
+                            className={classes.button}
+                        >
+                            <Typography>
+                                Sign Up
                         </Typography>
-                    </Button>
+                        </Button></form>
                 </Paper>
             </React.Fragment>
         )
     }
 }
 
-export default withStyles(styles)(SignUp);
+export default connect(mapStateToProps, mapDispatchToProps)(withStyles(styles)(SignUp));

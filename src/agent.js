@@ -6,7 +6,14 @@ const responseBody = res => res.body
 
 const handleError = err => {
     //console.log(err.message);
-    alert('Incorrect email or password!');
+    //console.log(err.status);
+    switch (err.status) {
+        case 401:
+            alert('Incorrect email or password!')
+            return;
+        case 500:
+            alert('Email has been signed up!')
+    }
 }
 
 const requests = {
@@ -23,7 +30,7 @@ const requests = {
 const User = {
     signUp: (email, password) =>
         requests.post('/api/user/signup', { email, password }),
-    signIn: async (email, password) =>
+    signIn: (email, password) =>
         requests.post('/api/user/login', { email, password }),
 }
 

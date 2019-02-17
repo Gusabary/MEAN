@@ -75,8 +75,8 @@ class SignIn extends React.Component {
     }
 
     componentWillReceiveProps(nextProps) {
-        console.log(this.props.redirectTo);
-        console.log(nextProps.redirectTo);
+        //console.log(this.props.redirectTo);
+        //console.log(nextProps.redirectTo);
         if (nextProps.redirectTo) {
             this.props.history.push(nextProps.redirectTo);
             this.props.onRedirect();

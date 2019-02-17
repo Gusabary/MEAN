@@ -3,7 +3,7 @@ import { withStyles, Button, AppBar, Toolbar } from '@material-ui/core'
 import AccountCircle from '@material-ui/icons/AccountCircle'
 import HomeButton from './HomeButton';
 import { connect } from 'react-redux';
-import {Link} from 'react-router-dom'
+import { Link } from 'react-router-dom'
 
 const styles = theme => ({
     icon: {
@@ -32,7 +32,7 @@ const mapDispatchToProps = dispatch => ({
     onLogOut: () =>
         dispatch({ type: 'LOG_OUT' }),
     onRedirect: () =>
-        dispatch({type: 'REDIRECTED'}),
+        dispatch({ type: 'REDIRECTED' }),
 })
 
 class LoggedInView extends React.Component {
@@ -46,8 +46,8 @@ class LoggedInView extends React.Component {
     }
 
     componentWillReceiveProps(nextProps) {
-        console.log(this.props.redirectTo);
-        console.log(nextProps.redirectTo);
+        //console.log(this.props.redirectTo);
+        //console.log(nextProps.redirectTo);
         //console.log(this.props.userId);
         if (nextProps.redirectTo) {
             this.props.history.push(nextProps.redirectTo);
@@ -80,4 +80,4 @@ class LoggedInView extends React.Component {
     }
 }
 
-export default connect(mapStateToProps,mapDispatchToProps)(withStyles(styles)(LoggedInView));
+export default connect(mapStateToProps, mapDispatchToProps)(withStyles(styles)(LoggedInView));
