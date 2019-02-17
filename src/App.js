@@ -4,7 +4,7 @@ import Home from './Components/Posts/index'
 import SignIn from './Components/SignIn'
 import SignUp from './Components/SignUp'
 import Header from './Components/Header/index'
-import New from './Components/New/index'
+import New from './Components/New'
 import { connect } from 'react-redux';
 
 const mapStateToProps = state => ({

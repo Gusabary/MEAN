@@ -3,6 +3,7 @@ const user = (state = {}, action) => {
         case 'SIGN_IN':
             return {
                 userId: action.payload.userId,
+                token: action.payload.token,
             }
         case 'SIGN_UP':
             return {

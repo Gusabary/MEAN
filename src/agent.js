@@ -2,8 +2,10 @@ const superagent = require('superagent');
 
 const API_ROOT = 'http://meandemo-env.2ammmpcvep.ap-southeast-1.elasticbeanstalk.com';
 
-const responseBody = res => res.body
-
+const responseBody = res => {
+    console.log(res.body);
+    return res.body
+}
 const handleError = err => {
     //console.log(err.message);
     //console.log(err.status);
@@ -33,6 +35,23 @@ const User = {
     signIn: (email, password) =>
         requests.post('/api/user/login', { email, password }),
 }
+
+const Posts = {
+    create: (title, image, content, token) => {
+        superagent.post(API_ROOT + '/api/posts')
+            .set('Content-Type', 'multipart/form-data')
+            .set('Authorization', 'Bearer ' + token)
+            .send({
+                'title': title,
+                'content': content,
+                'image': image
+            })
+            .then(responseBody)
+    }
+        //requests.post('/api/posts', { title, content }),
+}
+//create函数发送的http请求可能要设置一些东西才能上传文件
+
 
 /*const Auth = {
     login: (username, password) =>
@@ -71,4 +90,5 @@ const Articles = {
 
 export default {
     User,
+    Posts,
 }
