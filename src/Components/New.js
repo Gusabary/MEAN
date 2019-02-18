@@ -67,7 +67,7 @@ class New extends React.Component {
         this.setState({
             image: event.target.files[0],
         })
-        console.log(event.target.files[0].name)
+        //console.log(event.target.files[0].name)
     }
 
     hanldeContentChange(event) {

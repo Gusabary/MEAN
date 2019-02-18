@@ -37,21 +37,16 @@ const User = {
 }
 
 const Posts = {
-    create: (title, image, content, token) => {
-        console.log(image);
-        
+    create: (title, image, content, token) =>     
         superagent.post(API_ROOT + '/api/posts')
-            //.set('Content-Type', 'multipart/form-data')
             .set('Authorization', 'Bearer ' + token)
-            //.send(new FormData(document.getElementById('myform')))
             .attach('image',  image ,title)
             .field('title', title)
             .field('content',content)
-            .then(responseBody)
-    }
-        //requests.post('/api/posts', { title, content }),
+            .then(responseBody),
+    show: () => requests.get('/api/posts'),
 }
-//create函数发送的http请求可能要设置一些东西才能上传文件
+
 
 
 /*const Auth = {
