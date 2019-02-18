@@ -3,7 +3,7 @@ const superagent = require('superagent');
 const API_ROOT = 'http://meandemo-env.2ammmpcvep.ap-southeast-1.elasticbeanstalk.com';
 
 const responseBody = res => {
-    console.log(res.body);
+    //console.log(res.body);
     return res.body
 }
 const handleError = err => {
@@ -38,14 +38,15 @@ const User = {
 
 const Posts = {
     create: (title, image, content, token) => {
+        console.log(image);
+        
         superagent.post(API_ROOT + '/api/posts')
-            .set('Content-Type', 'multipart/form-data')
+            //.set('Content-Type', 'multipart/form-data')
             .set('Authorization', 'Bearer ' + token)
-            .send({
-                'title': title,
-                'content': content,
-                'image': image
-            })
+            //.send(new FormData(document.getElementById('myform')))
+            .attach('image',  image ,title)
+            .field('title', title)
+            .field('content',content)
             .then(responseBody)
     }
         //requests.post('/api/posts', { title, content }),

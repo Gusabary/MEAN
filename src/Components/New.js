@@ -32,11 +32,14 @@ const styles = theme => ({
 
 const mapStateToProps = state => ({
     token: state.user.token,
+    redirectTo: state.common.redirectTo,
 })
 
 const mapDispatchToProps = dispatch => ({
-    onSubmit: (title,image, content,token) =>
-        dispatch({ type: 'ADD_POST', payload: agent.Posts.create(title, image,content,token) })
+    onSubmit: (title, image, content, token) =>
+        dispatch({ type: 'ADD_POST', payload: agent.Posts.create(title, image, content, token) }),
+    onRedirect: () =>
+        dispatch({ type: 'REDIRECTED' }),
 })
 
 class New extends React.Component {
@@ -62,8 +65,9 @@ class New extends React.Component {
 
     handleImageChange(event) {
         this.setState({
-            image: event.target.value,
+            image: event.target.files[0],
         })
+        console.log(event.target.files[0].name)
     }
 
     hanldeContentChange(event) {
@@ -74,16 +78,23 @@ class New extends React.Component {
 
     handleSubmit(event) {
         event.preventDefault();
-        const { title, content,image } = this.state;
-        console.log(1);
-        this.props.onSubmit(title,image, content, this.props.token);
+        const { title, content, image } = this.state;
+        this.props.onSubmit(title, image, content, this.props.token);
+    }
+
+    componentWillReceiveProps(nextProps) {
+        if (nextProps.redirectTo) {
+            this.props.history.push(nextProps.redirectTo);
+            this.props.onRedirect();
+        }
     }
 
     render() {
         const { classes } = this.props;
+        //console.log(this.state.image);
         return (
             <React.Fragment>
-                <Paper className={classes.root}>
+                <Paper className={classes.root}><form onSubmit={this.handleSubmit} id="myform">
                     <TextField
                         type="text"
                         label="Post Title"
@@ -91,13 +102,13 @@ class New extends React.Component {
                         value={this.state.title}
                         onChange={this.handleTitleChange}
                     /> <br />
-                    <TextField
+                    <input
                         type="file"
                         //label="Pick Image"
-                        value={this.state.image}
+                        //value={this.state.image}
                         onChange={this.handleImageChange}
                     />
-                        
+
                     <br />
                     <TextField
                         type="text"
@@ -108,13 +119,13 @@ class New extends React.Component {
                         multiline
                         rows="16"
                     /> <br />
-                    <form onSubmit={this.handleSubmit}>
-                        <Button
-                            variant="contained"
-                            className={classes.save}
-                            type="submit"
-                        >
-                            Save Post
+
+                    <Button
+                        variant="contained"
+                        className={classes.save}
+                        type="submit"
+                    >
+                        Save Post
                     </Button> <br /></form>
                 </Paper>
             </React.Fragment>

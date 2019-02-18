@@ -8,10 +8,11 @@ const common = (state = defaultState, action) => {
         case 'SIGN_IN':
         case 'SIGN_UP':
         case 'LOG_OUT':
+        case 'ADD_POST':
             return {
                 redirectTo: '/',
             }
-        
+
         case 'REDIRECTED':
             return {
                 redirectTo: null,
