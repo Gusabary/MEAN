@@ -1,5 +1,5 @@
 import React from 'react'
-import { ExpansionPanel, ExpansionPanelSummary, ExpansionPanelDetails, Typography, withStyles } from '@material-ui/core'
+import { ExpansionPanel, ExpansionPanelSummary, ExpansionPanelDetails, Typography, withStyles, Grid } from '@material-ui/core'
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore'
 import agent from '../../agent'
 import { connect } from 'react-redux';
@@ -12,6 +12,10 @@ const styles = theme => ({
     padding: {
         marginTop: theme.spacing.unit * 8,
     },
+    image: {
+        width: '80%',
+        height: '40%',
+    }
 });
 
 const mapStateToProps = state => ({
@@ -41,23 +45,25 @@ class Post extends React.Component {
                 <p>loading...</p>
             )
         else
-        return (
-            <React.Fragment>
-                <div className={classes.padding}></div>
-                
-                {
-                    this.props.posts.map(post =>
-                    <ExpansionPanel className={classes.post}>
-                        <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
-                            {this.props.maxPosts}
-                        </ExpansionPanelSummary>
-                        <ExpansionPanelDetails>
-                            2
-                        </ExpansionPanelDetails>
-                    </ExpansionPanel>)
-                }
-            </React.Fragment>
-        );
+            return (
+                <React.Fragment>
+                    <div className={classes.padding}></div>
+                    <Grid>
+                        {
+                            this.props.posts.map(post =>
+                                <ExpansionPanel className={classes.post}>
+                                    <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
+                                        {post.title}
+                                    </ExpansionPanelSummary>
+                                    <ExpansionPanelDetails>
+                                        {post.content}
+                                        <img src={post.imagePath} className={classes.image} />
+                                    </ExpansionPanelDetails>
+                                </ExpansionPanel>)
+                        }
+                    </Grid>
+                </React.Fragment>
+            );
     }
 }
 
