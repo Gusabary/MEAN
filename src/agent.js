@@ -53,44 +53,11 @@ const Posts = {
             .field('title', title)
             .field('content', content)
             .then(responseBody),
+    delete: (postId,token) => 
+        superagent.del(API_ROOT + '/api/posts/' + postId)
+            .set('Authorization', 'Bearer ' + token)
+            .then(responseBody),
 }
-
-
-
-/*const Auth = {
-    login: (username, password) =>
-        requests.post('/users/login', { user: { username, password } }),
-    register: (username, email, password) =>
-        requests.post('/users', { user: { username, email, password } }),
-    getUser: id =>
-        requests.post('/users/get', { user: { id } }),
-    save: user =>
-        requests.put('/users', { user })
-}
-
-const Profile = {
-    get: (id, username) =>
-        requests.post('/profiles', { user1: { id }, user2: { username } })
-}
-
-
-const Articles = {
-    all: () =>
-        requests.get(`/articles/get?*`),
-    del: articleId =>
-        requests.del(`/articles?articleid=${articleId}`),
-    get: articleId =>
-        requests.get(`/articles/get?articleid=${articleId}`),
-    new: (id, article) =>
-        requests.post(`/articles`, { user: { id }, article }),
-    update: (article) =>
-        requests.put(`/articles`, { article }),
-    getTags: () =>
-        requests.get(`/tags`),
-    getByTag: (tag) =>
-        requests.get(`/articles/get?tag=${tag}`)
-
-};*/
 
 export default {
     User,

@@ -39,11 +39,11 @@ class Post extends React.Component {
                                     {post.creator === this.props.userId && (
                                         <div className={classes.buttons}>
                                             <Link to="New">
-                                                <Button onClick={()=>this.props.onClickEdit(post._id)}>
+                                                <Button onClick={() => this.props.onClickEdit(post._id)}>
                                                     Edit
                                                 </Button>
                                             </Link>
-                                            <Button>
+                                            <Button onClick={() => this.props.onClickDelete(post._id)}>
                                                 Delete
                                             </Button>
                                         </div>

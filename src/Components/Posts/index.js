@@ -12,6 +12,7 @@ const mapStateToProps = state => ({
     posts: state.posts.posts,
     userId: state.user.userId,
     token: state.user.token,
+    isDeleting: state.posts.isDeleting,
 })
 
 const mapDispatchToProps = dispatch => ({
@@ -19,6 +20,12 @@ const mapDispatchToProps = dispatch => ({
         dispatch({ type: 'LOAD_POSTS', payload: agent.Posts.show() }),
     onEdit: (postId) =>
         dispatch({ type: 'EDIT_START', payload: { postId } }),
+    onDeleteStart: () =>
+        dispatch({ type: 'DELETE_START' }),
+    onDeleteEnd: () =>
+        dispatch({type: 'DELETE_END'}),
+    onRedirect: () =>
+        dispatch({ type: 'REDIRECTED' }),
 })
 
 const filter = (posts, postsPerPage, currentPage, maxPosts) => {
@@ -43,6 +50,7 @@ class Posts extends React.Component {
         this.handleClickLeft = this.handleClickLeft.bind(this);
         this.handleClickRight = this.handleClickRight.bind(this);
         this.handleClickEdit = this.handleClickEdit.bind(this);
+        this.handleClickDelete = this.handleClickDelete.bind(this);
     }
 
     handleChange(event) {
@@ -70,13 +78,31 @@ class Posts extends React.Component {
         this.props.onEdit(postId);
     }
 
+    async handleClickDelete(postId) {
+        this.props.onDeleteStart();
+        await agent.Posts.delete(postId, this.props.token);
+        this.props.onLoad();
+    }
+
     componentWillMount() {
         this.props.onLoad();
+    }
+    /*componentWillUpdate() {
+        this.props.onLoad();
+    }*/
+    componentWillReceiveProps(nextProps) {
+        //console.log(11);
+        if (nextProps.redirectTo) {
+            this.props.history.push(nextProps.redirectTo);
+            this.props.onRedirect();
+        }
+        if (this.props.posts !== nextProps.posts)
+            this.props.onDeleteEnd()
     }
     render() {
         const { maxPosts, posts, userId, token } = this.props;
         const { postsPerPage, currentPage } = this.state;
-        if (!posts)
+        if (!posts||this.props.isDeleting)
             return (
                 <p>loading...</p>
             )
@@ -88,6 +114,7 @@ class Posts extends React.Component {
                         userId={userId}
                         token={token}
                         onClickEdit={(postId) => this.handleClickEdit(postId)}
+                        onClickDelete={(postId) => this.handleClickDelete(postId)}
                     />
                     <Toolbar>
                         <PostNumSelector
