@@ -1,6 +1,7 @@
 const defaultState = {
     maxPosts: 1,
-    posts:[],
+    posts: [],
+    isEditing: false,
 }
 
 const posts = (state = {}, action) => {
@@ -9,6 +10,16 @@ const posts = (state = {}, action) => {
             return {
                 maxPosts: action.payload.maxPosts,
                 posts: action.payload.posts.reverse(),
+            }
+        case 'EDIT_START':
+            return {
+                isEditing: true,
+                postId: action.payload.postId,
+                //token: action.payload.token,
+            }
+        case 'EDIT_END':
+            return {
+                isEditing: false,
             }
         default:
             return state

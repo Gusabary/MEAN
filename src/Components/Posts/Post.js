@@ -1,7 +1,7 @@
 import React from 'react'
-import { ExpansionPanel, ExpansionPanelSummary, ExpansionPanelDetails, Typography, withStyles, Grid } from '@material-ui/core'
+import { ExpansionPanel, ExpansionPanelSummary, ExpansionPanelDetails, Typography, withStyles, Grid, Button } from '@material-ui/core'
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore'
-
+import { Link } from 'react-router-dom'
 
 const styles = theme => ({
     post: {
@@ -14,7 +14,10 @@ const styles = theme => ({
     image: {
         width: '80%',
         height: '40%',
-    }
+    },
+    buttons: {
+        marginTop: theme.spacing.unit,
+    },
 });
 
 class Post extends React.Component {
@@ -33,6 +36,18 @@ class Post extends React.Component {
                                 <ExpansionPanelDetails>
                                     {post.content}
                                     <img src={post.imagePath} className={classes.image} />
+                                    {post.creator === this.props.userId && (
+                                        <div className={classes.buttons}>
+                                            <Link to="New">
+                                                <Button onClick={()=>this.props.onClickEdit(post._id)}>
+                                                    Edit
+                                                </Button>
+                                            </Link>
+                                            <Button>
+                                                Delete
+                                            </Button>
+                                        </div>
+                                    )}
                                 </ExpansionPanelDetails>
                             </ExpansionPanel>)
                     }

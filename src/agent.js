@@ -37,14 +37,22 @@ const User = {
 }
 
 const Posts = {
-    create: (title, image, content, token) =>     
+    create: (title, content, image, token) =>
         superagent.post(API_ROOT + '/api/posts')
             .set('Authorization', 'Bearer ' + token)
-            .attach('image',  image ,title)
+            .attach('image', image, title)
             .field('title', title)
-            .field('content',content)
+            .field('content', content)
             .then(responseBody),
     show: () => requests.get('/api/posts'),
+    update: (postId, title, content, image, token) =>
+        superagent.put(API_ROOT + '/api/posts/' + postId)
+            .set('Authorization', 'Bearer ' + token)
+            .attach('image', image, title)
+            .field('id', postId)
+            .field('title', title)
+            .field('content', content)
+            .then(responseBody),
 }
 
 

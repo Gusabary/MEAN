@@ -33,11 +33,17 @@ const styles = theme => ({
 const mapStateToProps = state => ({
     token: state.user.token,
     redirectTo: state.common.redirectTo,
+    isEditing: state.posts.isEditing,
+    postId: state.posts.postId,
 })
 
 const mapDispatchToProps = dispatch => ({
-    onSubmit: (title, image, content, token) =>
-        dispatch({ type: 'ADD_POST', payload: agent.Posts.create(title, image, content, token) }),
+    onSubmit: (title, image, content, token,isEditing,postId) => {
+        //console.log(1);
+        isEditing ?
+            dispatch({ type: 'EDIT_END', payload: agent.Posts.update(postId, title, content, image, token) }) :
+            dispatch({ type: 'ADD_POST', payload: agent.Posts.create(title, content, image, token) })
+    },
     onRedirect: () =>
         dispatch({ type: 'REDIRECTED' }),
 })
@@ -79,10 +85,11 @@ class New extends React.Component {
     handleSubmit(event) {
         event.preventDefault();
         const { title, content, image } = this.state;
-        this.props.onSubmit(title, image, content, this.props.token);
+        this.props.onSubmit(title, image, content, this.props.token,this.props.isEditing,this.props.postId);
     }
 
     componentWillReceiveProps(nextProps) {
+        //console.log(11);
         if (nextProps.redirectTo) {
             this.props.history.push(nextProps.redirectTo);
             this.props.onRedirect();
@@ -94,39 +101,41 @@ class New extends React.Component {
         //console.log(this.state.image);
         return (
             <React.Fragment>
-                <Paper className={classes.root}><form onSubmit={this.handleSubmit} id="myform">
-                    <TextField
-                        type="text"
-                        label="Post Title"
-                        className={classes.title}
-                        value={this.state.title}
-                        onChange={this.handleTitleChange}
-                    /> <br />
-                    <input
-                        type="file"
-                        //label="Pick Image"
-                        //value={this.state.image}
-                        onChange={this.handleImageChange}
-                    />
+                <Paper className={classes.root}>
+                    <form onSubmit={this.handleSubmit}>
+                        <TextField
+                            type="text"
+                            label="Post Title"
+                            className={classes.title}
+                            value={this.state.title}
+                            onChange={this.handleTitleChange}
+                        /> <br />
+                        <input
+                            type="file"
+                            //label="Pick Image"
+                            //value={this.state.image}
+                            onChange={this.handleImageChange}
+                        />
 
-                    <br />
-                    <TextField
-                        type="text"
-                        label="Post Content"
-                        className={classes.content}
-                        value={this.state.content}
-                        onChange={this.hanldeContentChange}
-                        multiline
-                        rows="16"
-                    /> <br />
+                        <br />
+                        <TextField
+                            type="text"
+                            label="Post Content"
+                            className={classes.content}
+                            value={this.state.content}
+                            onChange={this.hanldeContentChange}
+                            multiline
+                            rows="16"
+                        /> <br />
 
-                    <Button
-                        variant="contained"
-                        className={classes.save}
-                        type="submit"
-                    >
-                        Save Post
-                    </Button> <br /></form>
+                        <Button
+                            variant="contained"
+                            className={classes.save}
+                            type="submit"
+                        >
+                            Save Post
+                        </Button> <br />
+                    </form>
                 </Paper>
             </React.Fragment>
         )
