@@ -23,34 +23,20 @@ const styles = theme => ({
     },
 })
 
-const mapStateToProps = state => ({
-    redirectTo: state.common.redirectTo,
-    //userId: state.user.userId,
-})
-
 const mapDispatchToProps = dispatch => ({
     onLogOut: () =>
         dispatch({ type: 'LOG_OUT' }),
-    onRedirect: () =>
-        dispatch({ type: 'REDIRECTED' }),
 })
 
 class LoggedInView extends React.Component {
     constructor(props) {
         super(props);
-        //this.handleClick = this.handleClick.bind(this);
+        this.handleClick = this.handleClick.bind(this);
     }
 
-    /*handleClick() {
+    handleClick() {
         this.props.onLogOut();
     }
-
-    componentWillReceiveProps(nextProps) {
-        if (nextProps.redirectTo) {
-            this.props.history.push(nextProps.redirectTo);
-            this.props.onRedirect();
-        }
-    }*/
 
     render() {
         //console.log(this.props.userId);
@@ -67,9 +53,11 @@ class LoggedInView extends React.Component {
                             </Button>
                         </Link>
                         <AccountCircle className={classes.icon} />
-                        <Button onClick={this.handleClick} className={classes.label}>
-                            Log Out
-                        </Button>
+                        <Link to="/">
+                            <Button onClick={this.handleClick} className={classes.label}>
+                                Log Out
+                            </Button>
+                        </Link>
                     </div>
                 </Toolbar>
             </AppBar>
@@ -77,4 +65,4 @@ class LoggedInView extends React.Component {
     }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(withStyles(styles)(LoggedInView));
+export default connect(()=>({}), mapDispatchToProps)(withStyles(styles)(LoggedInView));
