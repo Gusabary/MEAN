@@ -19,10 +19,10 @@ class Arrows extends React.Component {
         const { classes } = this.props;
         return (
             <React.Fragment>
-                <IconButton className={classes.left}>
+                <IconButton className={classes.left} onClick={this.props.onClickLeft}>
                     <KeyboardArrowLeft fontSize="large" />
                 </IconButton>
-                <IconButton className={classes.right}>
+                <IconButton className={classes.right} onClick={this.props.onClickRight} >
                     <KeyboardArrowRight fontSize="large" />
                 </IconButton>
             </React.Fragment>

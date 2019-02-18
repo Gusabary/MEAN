@@ -5,25 +5,11 @@ const styles = theme => ({
     selector: {
         width: theme.spacing.unit * 15,
         marginTop: theme.spacing.unit*2,
-        marginLeft: '63%',
+        marginLeft: '60%',
     },
 });
 
 class PostNumSelector extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            num: 5
-        };
-        this.handleChange = this.handleChange.bind(this);
-    }
-
-    handleChange(event) {
-        this.setState({
-            num: event.target.value,
-        });
-    }
-
     render() {
         const { classes } = this.props;
         return (
@@ -31,8 +17,8 @@ class PostNumSelector extends React.Component {
                 <FormControl className={classes.selector}>
                     <InputLabel>Posts per page:</InputLabel>
                     <Select
-                        value={this.state.num}
-                        onChange={this.handleChange}
+                        value={this.props.num}
+                        onChange={this.props.onChange}
                     >
                         <MenuItem value={1}>1</MenuItem>
                         <MenuItem value={2}>2</MenuItem>
