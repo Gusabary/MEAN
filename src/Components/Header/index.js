@@ -24,7 +24,6 @@ class Header extends React.Component {
     }
 
     render() {
-        //console.log(this.props.userId);
         return (
             <React.Fragment>
                 {this.props.userId ?

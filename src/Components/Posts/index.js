@@ -41,6 +41,7 @@ const filter = (posts, postsPerPage, currentPage, maxPosts) => {
         if (index + 1 >= firstPost && index + 1 <= lastPost)
             filteredPosts = filteredPosts.concat(post);
     })
+    //console.log(filteredPosts.length)
     return filteredPosts;
 }
 
