@@ -1,6 +1,7 @@
 import React from 'react';
 import { withStyles, Button, AppBar, Toolbar, Radio } from '@material-ui/core'
-import AccountCircle from '@material-ui/icons/AccountCircle'
+import Create from '@material-ui/icons/Create'
+import DirectionsRun from '@material-ui/icons/DirectionsRun';
 import HomeButton from './HomeButton';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom'
@@ -49,13 +50,13 @@ class LoggedInView extends React.Component {
                         {this.props.isEnglish ? 'CN' : '英文'}
                     </Button>
                     <div className={classes.buttons}>
-                        <AccountCircle className={classes.icon} />
+                        <Create className={classes.icon} />
                         <Link to="New">
                             <Button className={classes.label}>
                                 {this.props.isEnglish ? 'Add Post' : '添加文章'}
                             </Button>
                         </Link>
-                        <AccountCircle className={classes.icon} />
+                        <DirectionsRun className={classes.icon} />
                         <Link to="/">
                             <Button onClick={this.handleClick} className={classes.label}>
                                 {this.props.isEnglish ? 'Log Out' : '退出登录'}
