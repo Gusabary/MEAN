@@ -1,5 +1,6 @@
 const defaultState = {
     redirectTo: null,
+    isEnglish: true,
     //isLoading: false,
 }
 
@@ -10,11 +11,13 @@ const common = (state = defaultState, action) => {
         case 'ADD_POST':
         case 'EDIT_END':
             return {
+                ...state,
                 redirectTo: '/',
             }
 
         case 'REDIRECTED':
             return {
+                ...state,
                 redirectTo: null,
             }
         /*case 'ASYNC_START':

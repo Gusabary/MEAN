@@ -26,13 +26,24 @@ const styles = theme => ({
     text: {
         width: '100%',
         borderStyle: 'solid',
-    }
+        marginRight: theme.spacing.unit,
+        //wordWrap: 'break-word',
+        wordBreak: 'break-all',
+    },
 });
+
+const parse = content => {
+    const splitedContent = content.split('\n');
+    return splitedContent.map(para =>
+        <p>{para}</p>
+    )
+}
 
 class Post extends React.Component {
     render() {
         const { classes } = this.props;
-        //const ReactMarkdown = require('react-markdown');
+        const ReactMarkdown = require('react-markdown');
+        //const parsedContent=
         return (
             <React.Fragment>
                 <div className={classes.padding}></div>
@@ -44,10 +55,10 @@ class Post extends React.Component {
                                     {post.title}
                                 </ExpansionPanelSummary>
                                 <ExpansionPanelDetails className={classes.content}>
-                                    <Typography paragraph noWrap className={classes.text}>
-                                        {post.content}
-                                    </Typography>
 
+                                    <div className={classes.text}>
+                                        {parse(post.content)}
+                                    </div>
                                     <img src={post.imagePath} className={classes.image} />
 
                                     {post.creator === this.props.userId && (
