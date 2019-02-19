@@ -12,17 +12,27 @@ const styles = theme => ({
         marginTop: theme.spacing.unit * 8,
     },
     image: {
-        width: '80%',
-        height: '40%',
+        width: '85%',
+        marginTop: theme.spacing.unit,
     },
     buttons: {
         marginTop: theme.spacing.unit,
     },
+    content: {
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'left',
+    },
+    text: {
+        width: '100%',
+        borderStyle: 'solid',
+    }
 });
 
 class Post extends React.Component {
     render() {
         const { classes } = this.props;
+        //const ReactMarkdown = require('react-markdown');
         return (
             <React.Fragment>
                 <div className={classes.padding}></div>
@@ -33,9 +43,13 @@ class Post extends React.Component {
                                 <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
                                     {post.title}
                                 </ExpansionPanelSummary>
-                                <ExpansionPanelDetails>
-                                    {post.content}
+                                <ExpansionPanelDetails className={classes.content}>
+                                    <Typography paragraph noWrap className={classes.text}>
+                                        {post.content}
+                                    </Typography>
+
                                     <img src={post.imagePath} className={classes.image} />
+
                                     {post.creator === this.props.userId && (
                                         <div className={classes.buttons}>
                                             <Link to="New">
@@ -48,6 +62,7 @@ class Post extends React.Component {
                                             </Button>
                                         </div>
                                     )}
+
                                 </ExpansionPanelDetails>
                             </ExpansionPanel>)
                     }
