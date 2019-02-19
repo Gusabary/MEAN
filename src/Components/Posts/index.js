@@ -6,8 +6,6 @@ import Toolbar from '@material-ui/core/Toolbar'
 import Arrows from './Arrows';
 import agent from '../../agent'
 import { connect } from 'react-redux';
-import SentimentDissatisfied from '@material-ui/icons/SentimentDissatisfied';
-import { CircularProgress } from '@material-ui/core';
 import Loading from './Loading';
 import NoPostView from './NoPostView';
 
@@ -41,7 +39,6 @@ const filter = (posts, postsPerPage, currentPage, maxPosts) => {
         if (index + 1 >= firstPost && index + 1 <= lastPost)
             filteredPosts = filteredPosts.concat(post);
     })
-    //console.log(filteredPosts.length)
     return filteredPosts;
 }
 
@@ -94,7 +91,6 @@ class Posts extends React.Component {
         this.props.onLoad();
     }
     componentWillReceiveProps(nextProps) {
-        //console.log(11);
         if (nextProps.redirectTo) {
             this.props.history.push(nextProps.redirectTo);
             this.props.onRedirect();
@@ -122,6 +118,7 @@ class Posts extends React.Component {
                         token={token}
                         onClickEdit={(postId) => this.handleClickEdit(postId)}
                         onClickDelete={(postId) => this.handleClickDelete(postId)}
+                        isEnglish={isEnglish}
                     />
                     <Toolbar>
                         <PostNumSelector

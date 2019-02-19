@@ -1,9 +1,8 @@
 import React from 'react'
-import { FormControl, withStyles, InputLabel, Select, MenuItem, Typography } from '@material-ui/core';
+import { withStyles, Typography } from '@material-ui/core';
 
 const styles = theme => ({
     text: {
-        //width: theme.spacing.unit * 15,
         marginTop: theme.spacing.unit * 4,
         marginLeft: theme.spacing.unit * 6,
     },

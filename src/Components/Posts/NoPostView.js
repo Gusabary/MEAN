@@ -1,5 +1,5 @@
 import React from 'react'
-import {  withStyles, CircularProgress, Typography } from '@material-ui/core';
+import {  withStyles, Typography } from '@material-ui/core';
 import SentimentDissatisfied from '@material-ui/icons/SentimentDissatisfied';
 
 const styles = theme => ({

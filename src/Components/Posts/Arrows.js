@@ -1,5 +1,5 @@
 import React from 'react'
-import { withStyles, Button, IconButton } from '@material-ui/core';
+import { withStyles, IconButton } from '@material-ui/core';
 import KeyboardArrowLeft from '@material-ui/icons/KeyboardArrowLeft'
 import KeyboardArrowRight from '@material-ui/icons/KeyboardArrowRight'
 
