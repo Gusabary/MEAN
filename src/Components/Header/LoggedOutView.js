@@ -1,6 +1,6 @@
 import React from 'react';
 import { withStyles, Button, AppBar, Toolbar } from '@material-ui/core'
-import {Link} from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import AccountCircle from '@material-ui/icons/AccountCircle'
 import HomeButton from './HomeButton';
 
@@ -29,17 +29,20 @@ class LoggedInView extends React.Component {
             <AppBar position="static" className={classes.bar}>
                 <Toolbar>
                     <HomeButton />
+                    <Button onClick={this.props.onClick}>
+                        {this.props.isEnglish ? 'CN' : '英文'}
+                    </Button>
                     <div className={classes.buttons}>
                         <AccountCircle className={classes.icon} />
                         <Link to="SignIn">
                             <Button className={classes.label}>
-                                Sign In
+                                {this.props.isEnglish ? 'Sign In' : '登录'}
                             </Button>
                         </Link>
                         <AccountCircle className={classes.icon} />
                         <Link to="SignUp">
                             <Button onClick={this.props.onClick} className={classes.label}>
-                                Sign Up
+                                {this.props.isEnglish ? 'Sign Up' : '注册'}
                             </Button>
                         </Link>
                     </div>

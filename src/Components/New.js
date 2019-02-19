@@ -35,10 +35,11 @@ const mapStateToProps = state => ({
     redirectTo: state.common.redirectTo,
     isEditing: state.posts.isEditing,
     postId: state.posts.postId,
+    isEnglish: state.common.isEnglish,
 })
 
 const mapDispatchToProps = dispatch => ({
-    onSubmit: (title, image, content, token,isEditing,postId) => {
+    onSubmit: (title, image, content, token, isEditing, postId) => {
         //console.log(1);
         isEditing ?
             dispatch({ type: 'EDIT_END', payload: agent.Posts.update(postId, title, content, image, token) }) :
@@ -85,7 +86,7 @@ class New extends React.Component {
     handleSubmit(event) {
         event.preventDefault();
         const { title, content, image } = this.state;
-        this.props.onSubmit(title, image, content, this.props.token,this.props.isEditing,this.props.postId);
+        this.props.onSubmit(title, image, content, this.props.token, this.props.isEditing, this.props.postId);
     }
 
     componentWillReceiveProps(nextProps) {
@@ -105,7 +106,7 @@ class New extends React.Component {
                     <form onSubmit={this.handleSubmit}>
                         <TextField
                             type="text"
-                            label="Post Title"
+                            label={this.props.isEnglish ? 'Post Title' : '文章标题'}
                             className={classes.title}
                             value={this.state.title}
                             onChange={this.handleTitleChange}
@@ -120,7 +121,7 @@ class New extends React.Component {
                         <br />
                         <TextField
                             type="text"
-                            label="Post Content"
+                            label={this.props.isEnglish ? 'Post Content' : '正文内容'}
                             className={classes.content}
                             value={this.state.content}
                             onChange={this.hanldeContentChange}
@@ -133,7 +134,7 @@ class New extends React.Component {
                             className={classes.save}
                             type="submit"
                         >
-                            Save Post
+                            {this.props.isEnglish ? 'Save Post' : '保存文章'}
                         </Button> <br />
                     </form>
                 </Paper>

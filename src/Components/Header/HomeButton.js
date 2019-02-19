@@ -1,5 +1,6 @@
 import React from 'react'
 import { Typography, withStyles } from '@material-ui/core';
+import { Link } from 'react-router-dom';
 
 const styles = theme => ({
     root: {
@@ -12,9 +13,9 @@ class HomeButton extends React.Component {
         const { classes } = this.props;
         return (
             <Typography variant="h5" className={classes.root}>
-                <a href="Posts">
+                <Link to="/">
                     MEAN
-                </a>
+                </Link>
             </Typography>
         );
     }

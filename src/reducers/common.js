@@ -21,6 +21,10 @@ const common = (state = defaultState, action) => {
             return {
                 isLoading: true,
             }*/
+        case 'CHANGE_LANGUAGE':
+            return {
+                isEnglish: !state.isEnglish,
+            }
         default:
             return state
     }

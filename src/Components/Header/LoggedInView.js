@@ -1,5 +1,5 @@
 import React from 'react';
-import { withStyles, Button, AppBar, Toolbar } from '@material-ui/core'
+import { withStyles, Button, AppBar, Toolbar, Radio } from '@material-ui/core'
 import AccountCircle from '@material-ui/icons/AccountCircle'
 import HomeButton from './HomeButton';
 import { connect } from 'react-redux';
@@ -45,17 +45,20 @@ class LoggedInView extends React.Component {
             <AppBar position="static" className={classes.bar}>
                 <Toolbar>
                     <HomeButton />
+                    <Button onClick={this.props.onClick}>
+                        {this.props.isEnglish ? 'CN' : '英文'}
+                    </Button>
                     <div className={classes.buttons}>
                         <AccountCircle className={classes.icon} />
                         <Link to="New">
                             <Button className={classes.label}>
-                                Add Post
+                                {this.props.isEnglish ? 'Add Post' : '添加文章'}
                             </Button>
                         </Link>
                         <AccountCircle className={classes.icon} />
                         <Link to="/">
                             <Button onClick={this.handleClick} className={classes.label}>
-                                Log Out
+                                {this.props.isEnglish ? 'Log Out' : '退出登录'}
                             </Button>
                         </Link>
                     </div>
@@ -65,4 +68,4 @@ class LoggedInView extends React.Component {
     }
 }
 
-export default connect(()=>({}), mapDispatchToProps)(withStyles(styles)(LoggedInView));
+export default connect(() => ({}), mapDispatchToProps)(withStyles(styles)(LoggedInView));

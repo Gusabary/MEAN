@@ -36,6 +36,7 @@ const styles = theme => ({
 
 const mapStateToProps = state => ({
     redirectTo: state.common.redirectTo,
+    isEnglish: state.common.isEnglish,
 })
 
 const mapDispatchToProps = dispatch => ({
@@ -93,17 +94,17 @@ class SignUp extends React.Component {
                     <Toolbar>
                         <AccountCircle fontSize="large" />
                         <Typography variant="h4" className={classes.text} >
-                            Sign Up
+                            {this.props.isEnglish ? 'Sign Up' : '注册'}
                         </Typography>
                     </Toolbar>
                     <Link to="SignIn">
                         <Typography className={classes.link}>
-                            Have an account?
+                            {this.props.isEnglish ? 'Have an account?' : '已经有一个账号？'}
                         </Typography>
                     </Link>
                     <TextField
                         type="email"
-                        label="Email Address"
+                        label={this.props.isEnglish ? 'Email Address' : '邮箱地址'}
                         className={classes.textField}
                         value={this.state.email}
                         onChange={this.handleEmailChange}
@@ -111,7 +112,7 @@ class SignUp extends React.Component {
                     />
                     <TextField
                         type="password"
-                        label="Password"
+                        label={this.props.isEnglish ? 'Password' : '密码'}
                         className={classes.textField}
                         value={this.state.password}
                         onChange={this.handlePasswordChange}
@@ -123,8 +124,8 @@ class SignUp extends React.Component {
                             className={classes.button}
                         >
                             <Typography>
-                                Sign Up
-                        </Typography>
+                                {this.props.isEnglish ? 'Sign Up' : '注册'}
+                            </Typography>
                         </Button></form>
                 </Paper>
             </React.Fragment>

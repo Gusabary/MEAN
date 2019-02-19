@@ -15,7 +15,9 @@ class PostNumSelector extends React.Component {
         return (
             <React.Fragment>
                 <FormControl className={classes.selector}>
-                    <InputLabel>Posts per page:</InputLabel>
+                    <InputLabel>
+                    {this.props.isEnglish ? 'Post per page:' : '每页文章数：'}
+                    </InputLabel>
                     <Select
                         value={this.props.num}
                         onChange={this.props.onChange}

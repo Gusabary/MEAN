@@ -17,7 +17,10 @@ class PostNum extends React.Component {
         return (
             <React.Fragment>
                 <Typography className={classes.text}>
-                    {firstPost} - {lastPost} of {maxPosts}
+                    {this.props.isEnglish ?
+                        `${firstPost} - ${lastPost} of ${maxPosts}` :
+                        `${firstPost} - ${lastPost} 共 ${maxPosts} 篇`
+                    }
                 </Typography>
             </React.Fragment>
         )

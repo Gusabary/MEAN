@@ -32,6 +32,7 @@ const styles = theme => ({
 
 const mapStateToProps = state => ({
     redirectTo: state.common.redirectTo,
+    isEnglish: state.common.isEnglish,
 })
 
 const mapDispatchToProps = dispatch => ({
@@ -91,13 +92,13 @@ class SignIn extends React.Component {
                     <Toolbar>
                         <AccountCircle fontSize="large" />
                         <Typography variant="h4" className={classes.text} >
-                            Sign In
+                            {this.props.isEnglish ? 'Sign In' : '登录'}
                         </Typography>
                     </Toolbar>
 
                     <TextField
                         type="email"
-                        label="Email Address"
+                        label={this.props.isEnglish ? 'Email Address' : '邮箱地址'}
                         className={classes.textField}
                         value={this.state.email}
                         onChange={this.handleEmailChange}
@@ -106,7 +107,7 @@ class SignIn extends React.Component {
                     />
                     <TextField
                         type="password"
-                        label="Password"
+                        label={this.props.isEnglish ? 'Password' : '密码'}
                         className={classes.textField}
                         value={this.state.password}
                         onChange={this.handlePasswordChange}
@@ -119,7 +120,7 @@ class SignIn extends React.Component {
                             className={classes.button}
                         >
                             <Typography>
-                                Sign In
+                                {this.props.isEnglish ? 'Sign In' : '登录'}
                             </Typography>
                         </Button>
                     </form>

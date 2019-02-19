@@ -13,6 +13,7 @@ const mapStateToProps = state => ({
     userId: state.user.userId,
     token: state.user.token,
     isDeleting: state.posts.isDeleting,
+    isEnglish: state.common.isEnglish,
 })
 
 const mapDispatchToProps = dispatch => ({
@@ -23,7 +24,7 @@ const mapDispatchToProps = dispatch => ({
     onDeleteStart: () =>
         dispatch({ type: 'DELETE_START' }),
     onDeleteEnd: () =>
-        dispatch({type: 'DELETE_END'}),
+        dispatch({ type: 'DELETE_END' }),
     onRedirect: () =>
         dispatch({ type: 'REDIRECTED' }),
 })
@@ -96,13 +97,13 @@ class Posts extends React.Component {
             this.props.history.push(nextProps.redirectTo);
             this.props.onRedirect();
         }
-        if (this.props.posts !== nextProps.posts)
+        if (this.props.posts && this.props.posts !== nextProps.posts)
             this.props.onDeleteEnd()
     }
     render() {
-        const { maxPosts, posts, userId, token } = this.props;
+        const { maxPosts, posts, userId, token,isEnglish } = this.props;
         const { postsPerPage, currentPage } = this.state;
-        if (!posts||this.props.isDeleting)
+        if (!posts || this.props.isDeleting)
             return (
                 <p>loading...</p>
             )
@@ -120,11 +121,13 @@ class Posts extends React.Component {
                         <PostNumSelector
                             num={postsPerPage}
                             onChange={this.handleChange}
+                            isEnglish={isEnglish}
                         />
                         <PostNum
                             postsPerPage={postsPerPage}
                             currentPage={currentPage}
                             maxPosts={maxPosts}
+                            isEnglish={isEnglish}
                         />
                         <Arrows
                             onClickLeft={this.handleClickLeft}
