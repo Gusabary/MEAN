@@ -94,7 +94,7 @@ class SignUp extends React.Component {
                     <Toolbar>
                         <AccountCircle fontSize="large" />
                         <Typography variant="h4" className={classes.text} >
-                            {this.props.isEnglish ? 'Sign Up' : '注册'}
+                            {this.props.isEnglish ? 'Sign Up' : '用户注册'}
                         </Typography>
                     </Toolbar>
                     <Link to="SignIn">

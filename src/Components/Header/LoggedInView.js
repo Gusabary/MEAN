@@ -7,20 +7,21 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom'
 
 const styles = theme => ({
-    icon: {
-        marginTop: theme.spacing.unit,
-        //marginRight: -theme.spacing.unit * 0.5,
-        marginLeft: theme.spacing.unit,
-    },
-    label: {
-        marginTop: -theme.spacing.unit * 1.5,
-    },
     bar: {
         backgroundColor: theme.palette.secondary.main,
     },
-
     buttons: {
-        marginLeft: theme.spacing.unit * 108,
+        marginLeft: '68%',
+    },
+    lang: {
+        marginTop: -theme.spacing.unit * 1.5,
+    },
+    icon: {
+        marginTop: theme.spacing.unit,
+        marginLeft: theme.spacing.unit * 3,
+    },
+    label: {
+        marginTop: -theme.spacing.unit * 1.5,
     },
 })
 
@@ -40,16 +41,16 @@ class LoggedInView extends React.Component {
     }
 
     render() {
-        //console.log(this.props.userId);
         const { classes } = this.props;
         return (
             <AppBar position="static" className={classes.bar}>
                 <Toolbar>
                     <HomeButton />
-                    <Button onClick={this.props.onClick}>
-                        {this.props.isEnglish ? 'CN' : '英文'}
-                    </Button>
                     <div className={classes.buttons}>
+                        <Button onClick={this.props.onClick}  className={classes.lang}>
+                            {this.props.isEnglish ? 'CN' : '英文'}
+                        </Button>
+
                         <Create className={classes.icon} />
                         <Link to="New">
                             <Button className={classes.label}>

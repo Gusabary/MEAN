@@ -92,7 +92,7 @@ class SignIn extends React.Component {
                     <Toolbar>
                         <AccountCircle fontSize="large" />
                         <Typography variant="h4" className={classes.text} >
-                            {this.props.isEnglish ? 'Sign In' : '登录'}
+                            {this.props.isEnglish ? 'Sign In' : '用户登录'}
                         </Typography>
                     </Toolbar>
 
