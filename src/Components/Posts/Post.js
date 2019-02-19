@@ -33,16 +33,17 @@ const styles = theme => ({
 });
 
 const parse = content => {
+    const ReactMarkdown = require('react-markdown');
     const splitedContent = content.split('\n');
     return splitedContent.map(para =>
-        <p>{para}</p>
+        <p><ReactMarkdown source={para} /></p>
     )
 }
 
 class Post extends React.Component {
     render() {
         const { classes } = this.props;
-        const ReactMarkdown = require('react-markdown');
+
         //const parsedContent=
         return (
             <React.Fragment>
