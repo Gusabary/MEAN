@@ -27,8 +27,8 @@ const styles = theme => ({
         width: '100%',
         borderStyle: 'solid',
         marginRight: theme.spacing.unit,
-        //wordWrap: 'break-word',
-        wordBreak: 'break-all',
+        wordWrap: 'break-word',
+        //wordBreak: 'break-all',
     },
 });
 
@@ -43,8 +43,6 @@ const parse = content => {
 class Post extends React.Component {
     render() {
         const { classes } = this.props;
-
-        //const parsedContent=
         return (
             <React.Fragment>
                 <div className={classes.padding}></div>

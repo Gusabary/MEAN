@@ -14,20 +14,24 @@ const posts = (state = defaultState, action) => {
             }
         case 'EDIT_START':
             return {
+                ...state,
                 isEditing: true,
                 postId: action.payload.postId,
                 //token: action.payload.token,
             }
         case 'EDIT_END':
             return {
+                ...state,
                 isEditing: false,
             }
         case 'DELETE_START':
             return {
+                ...state,
                 isDeleting: true,
             }
         case 'DELTE_END':
             return {
+                ...state,
                 isDeleting: false,
             }
         default:

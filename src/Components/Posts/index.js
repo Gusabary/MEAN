@@ -6,6 +6,10 @@ import Toolbar from '@material-ui/core/Toolbar'
 import Arrows from './Arrows';
 import agent from '../../agent'
 import { connect } from 'react-redux';
+import SentimentDissatisfied from '@material-ui/icons/SentimentDissatisfied';
+import { CircularProgress } from '@material-ui/core';
+import Loading from './Loading';
+import NoPostView from './NoPostView';
 
 const mapStateToProps = state => ({
     maxPosts: state.posts.maxPosts,
@@ -88,9 +92,6 @@ class Posts extends React.Component {
     componentWillMount() {
         this.props.onLoad();
     }
-    /*componentWillUpdate() {
-        this.props.onLoad();
-    }*/
     componentWillReceiveProps(nextProps) {
         //console.log(11);
         if (nextProps.redirectTo) {
@@ -101,11 +102,15 @@ class Posts extends React.Component {
             this.props.onDeleteEnd()
     }
     render() {
-        const { maxPosts, posts, userId, token,isEnglish } = this.props;
+        const { maxPosts, posts, userId, token, isDeleting, isEnglish } = this.props;
         const { postsPerPage, currentPage } = this.state;
-        if (!posts || this.props.isDeleting)
+        if (!posts)
             return (
-                <p>loading...</p>
+                <NoPostView />
+            )
+        else if (isDeleting)
+            return (
+                <Loading />
             )
         else
             return (
