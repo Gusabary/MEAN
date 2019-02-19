@@ -3,12 +3,9 @@ const superagent = require('superagent');
 const API_ROOT = 'http://meandemo-env.2ammmpcvep.ap-southeast-1.elasticbeanstalk.com';
 
 const responseBody = res => {
-    //console.log(res.body);
     return res.body
 }
 const handleError = err => {
-    //console.log(err.message);
-    //console.log(err.status);
     switch (err.status) {
         case 401:
             alert('Incorrect email or password!')

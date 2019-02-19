@@ -11,7 +11,6 @@ const styles = theme => ({
         marginLeft: theme.spacing.unit * 55,
         paddingTop: theme.spacing.unit * 5,
         paddingBottom: theme.spacing.unit * 6,
-        //paddingLeft: theme.spacing.unit * 5,
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'center',
@@ -71,13 +70,10 @@ class SignIn extends React.Component {
     handleSubmit(event) {
         event.preventDefault();
         const { email, password } = this.state;
-        //console.log(2);
         this.props.onSubmit(email, password);
     }
 
     componentWillReceiveProps(nextProps) {
-        //console.log(this.props.redirectTo);
-        //console.log(nextProps.redirectTo);
         if (nextProps.redirectTo) {
             this.props.history.push(nextProps.redirectTo);
             this.props.onRedirect();
@@ -103,7 +99,6 @@ class SignIn extends React.Component {
                         value={this.state.email}
                         onChange={this.handleEmailChange}
                         required
-
                     />
                     <TextField
                         type="password"
@@ -112,8 +107,8 @@ class SignIn extends React.Component {
                         value={this.state.password}
                         onChange={this.handlePasswordChange}
                         required
-
-                    /><form onSubmit={this.handleSubmit}>
+                    />
+                    <form onSubmit={this.handleSubmit}>
                         <Button
                             type="submit"
                             variant="contained"

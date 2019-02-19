@@ -16,7 +16,6 @@ const styles = theme => ({
     image: {
         marginTop: theme.spacing.unit,
         marginLeft: theme.spacing.unit * 2,
-        //marginBottom: theme.spacing.unit*3,
     },
     content: {
         width: '96%',
@@ -40,7 +39,6 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
     onSubmit: (title, image, content, token, isEditing, postId) => {
-        //console.log(1);
         isEditing ?
             dispatch({ type: 'EDIT_END', payload: agent.Posts.update(postId, title, content, image, token) }) :
             dispatch({ type: 'ADD_POST', payload: agent.Posts.create(title, content, image, token) })
@@ -74,7 +72,6 @@ class New extends React.Component {
         this.setState({
             image: event.target.files[0],
         })
-        //console.log(event.target.files[0].name)
     }
 
     hanldeContentChange(event) {
@@ -90,7 +87,6 @@ class New extends React.Component {
     }
 
     componentWillReceiveProps(nextProps) {
-        //console.log(11);
         if (nextProps.redirectTo) {
             this.props.history.push(nextProps.redirectTo);
             this.props.onRedirect();
@@ -99,7 +95,6 @@ class New extends React.Component {
 
     render() {
         const { classes } = this.props;
-        //console.log(this.state.image);
         return (
             <React.Fragment>
                 <Paper className={classes.root}>
@@ -110,14 +105,12 @@ class New extends React.Component {
                             className={classes.title}
                             value={this.state.title}
                             onChange={this.handleTitleChange}
-                        /> <br />
+                        />
+                        <br />
                         <input
                             type="file"
-                            //label="Pick Image"
-                            //value={this.state.image}
                             onChange={this.handleImageChange}
                         />
-
                         <br />
                         <TextField
                             type="text"
@@ -127,15 +120,16 @@ class New extends React.Component {
                             onChange={this.hanldeContentChange}
                             multiline
                             rows="16"
-                        /> <br />
-
+                        />
+                        <br />
                         <Button
                             variant="contained"
                             className={classes.save}
                             type="submit"
                         >
                             {this.props.isEnglish ? 'Save Post' : '保存文章'}
-                        </Button> <br />
+                        </Button>
+                        <br />
                     </form>
                 </Paper>
             </React.Fragment>
