@@ -5,27 +5,31 @@ import { connect } from 'react-redux'
 import agent from '../agent'
 
 const styles = theme => ({
-    paper: {
+    root: {
         marginTop: theme.spacing.unit * 10,
-        marginRight: theme.spacing.unit * 55,
-        marginLeft: theme.spacing.unit * 55,
+        width: '30%',
+        marginLeft: '35%',
         paddingTop: theme.spacing.unit * 5,
         paddingBottom: theme.spacing.unit * 6,
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'center',
     },
+    icon: {
+        marginLeft: -theme.spacing.unit*2.5, 
+    },
     text: {
-        paddingLeft: theme.spacing.unit * 2
+        marginLeft: theme.spacing.unit*2,
     },
     textField: {
-        marginTop: theme.spacing.unit * 2,
-        marginLeft: -theme.spacing.unit * 5,
-        marginRight: -theme.spacing.unit * 5,
+        marginTop: theme.spacing.unit * 3,
         width: '70%',
+        marginLeft: '15%',
     },
     button: {
         marginTop: theme.spacing.unit * 7,
+        width: '22%',
+        marginLeft: '39%',
     },
 });
 
@@ -84,31 +88,31 @@ class SignIn extends React.Component {
         const { classes } = this.props;
         return (
             <React.Fragment>
-                <Paper className={classes.paper}>
+                <Paper className={classes.root}>
                     <Toolbar>
-                        <AccountCircle fontSize="large" />
+                        <AccountCircle fontSize="large" className={classes.icon} />
                         <Typography variant="h4" className={classes.text} >
                             {this.props.isEnglish ? 'Sign In' : '用户登录'}
                         </Typography>
                     </Toolbar>
-
-                    <TextField
-                        type="email"
-                        label={this.props.isEnglish ? 'Email Address' : '邮箱地址'}
-                        className={classes.textField}
-                        value={this.state.email}
-                        onChange={this.handleEmailChange}
-                        required
-                    />
-                    <TextField
-                        type="password"
-                        label={this.props.isEnglish ? 'Password' : '密码'}
-                        className={classes.textField}
-                        value={this.state.password}
-                        onChange={this.handlePasswordChange}
-                        required
-                    />
                     <form onSubmit={this.handleSubmit}>
+                        <TextField
+                            type="email"
+                            label={this.props.isEnglish ? 'Email Address' : '邮箱地址'}
+                            className={classes.textField}
+                            value={this.state.email}
+                            onChange={this.handleEmailChange}
+                            required
+                        />
+                        <TextField
+                            type="password"
+                            label={this.props.isEnglish ? 'Password' : '密码'}
+                            className={classes.textField}
+                            value={this.state.password}
+                            onChange={this.handlePasswordChange}
+                            required
+                        />
+
                         <Button
                             type="submit"
                             variant="contained"
