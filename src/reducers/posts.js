@@ -17,7 +17,6 @@ const posts = (state = defaultState, action) => {
                 ...state,
                 isEditing: true,
                 postId: action.payload.postId,
-                //token: action.payload.token,
             }
         case 'EDIT_END':
             return {

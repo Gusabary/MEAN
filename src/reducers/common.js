@@ -1,7 +1,6 @@
 const defaultState = {
     redirectTo: null,
     isEnglish: true,
-    //isLoading: false,
 }
 
 const common = (state = defaultState, action) => {

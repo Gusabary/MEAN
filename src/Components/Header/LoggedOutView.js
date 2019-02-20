@@ -1,8 +1,8 @@
 import React from 'react';
 import { withStyles, Button, AppBar, Toolbar } from '@material-ui/core'
-import { Link } from 'react-router-dom'
 import AccountCircle from '@material-ui/icons/AccountCircle'
 import HomeButton from './HomeButton';
+import { Link } from 'react-router-dom'
 
 const styles = theme => ({
     bar: {

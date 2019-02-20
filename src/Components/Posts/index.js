@@ -1,11 +1,11 @@
 import React from 'react'
+import { Toolbar } from '@material-ui/core'
+import { connect } from 'react-redux';
+import agent from '../../agent'
 import Post from './Post'
 import PostNumSelector from './PostNumSelector';
 import PostNum from './PostNum';
-import Toolbar from '@material-ui/core/Toolbar'
 import Arrows from './Arrows';
-import agent from '../../agent'
-import { connect } from 'react-redux';
 import Loading from './Loading';
 import NoPostView from './NoPostView';
 

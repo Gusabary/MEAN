@@ -1,15 +1,15 @@
 import React from 'react'
-import {  withStyles, Typography } from '@material-ui/core';
+import { withStyles, Typography } from '@material-ui/core';
 import SentimentDissatisfied from '@material-ui/icons/SentimentDissatisfied';
 
 const styles = theme => ({
     root: {
         marginLeft: '48%',
-        marginTop: theme.spacing.unit*12,
+        marginTop: theme.spacing.unit * 12,
     },
     text: {
-        marginLeft: -theme.spacing.unit*12,
-        marginTop: theme.spacing.unit*4,
+        marginLeft: -theme.spacing.unit * 12,
+        marginTop: theme.spacing.unit * 4,
     }
 });
 

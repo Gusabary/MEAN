@@ -1,11 +1,10 @@
 import React from 'react'
-import { ExpansionPanel, ExpansionPanelSummary, ExpansionPanelDetails, Typography, withStyles, Grid, Button, Toolbar } from '@material-ui/core'
+import { ExpansionPanel, ExpansionPanelSummary, ExpansionPanelDetails, Typography, withStyles, Button, Toolbar } from '@material-ui/core'
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore'
 import Create from '@material-ui/icons/Create'
 import Delete from '@material-ui/icons/Delete'
-//import Create from
-import { Link } from 'react-router-dom'
 import PermIdentiy from '@material-ui/icons/PermIdentity';
+import { Link } from 'react-router-dom'
 
 const styles = theme => ({
     padding: {
@@ -23,14 +22,12 @@ const styles = theme => ({
     },
     edit: {
         color: theme.palette.secondary.main,
-        //fontWeight: 'bold',
         border: 'solid',
         textDecoration: 'underline',
     },
     delete: {
         marginLeft: theme.spacing.unit * 2,
         color: theme.palette.error.main,
-        //fontWeight: 'bold',
         border: 'solid',
         textDecoration: 'underline',
     },
@@ -127,8 +124,8 @@ class Post extends React.Component {
                                                             variant="outlined"
                                                         >
                                                             <Create className={classes.buttonIcon} />
-                                                            {this.props.isEnglish?'Edit':'编辑'}
-                                                            </Button>
+                                                            {this.props.isEnglish ? 'Edit' : '编辑'}
+                                                        </Button>
                                                     </Link>
                                                     <Button
                                                         className={classes.delete}
@@ -136,8 +133,8 @@ class Post extends React.Component {
                                                         variant="outlined"
                                                     >
                                                         <Delete className={classes.buttonIcon} />
-                                                        {this.props.isEnglish?'Delete':'删除'}
-                                                        </Button>
+                                                        {this.props.isEnglish ? 'Delete' : '删除'}
+                                                    </Button>
                                                 </div>
                                             )}
                                         </Toolbar>

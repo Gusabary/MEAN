@@ -6,11 +6,7 @@ const user = (state = {}, action) => {
                 token: action.payload.token,
             }
         case 'SIGN_UP':
-            return {
-
-            }
         case 'LOG_OUT':
-            //console.log('ha');
             return {}
         default:
             return state;

@@ -1,5 +1,5 @@
 import React from 'react';
-import { withStyles, Button, AppBar, Toolbar, Radio } from '@material-ui/core'
+import { withStyles, Button, AppBar, Toolbar } from '@material-ui/core'
 import Create from '@material-ui/icons/Create'
 import DirectionsRun from '@material-ui/icons/DirectionsRun';
 import HomeButton from './HomeButton';

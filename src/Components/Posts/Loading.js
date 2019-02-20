@@ -1,14 +1,14 @@
 import React from 'react'
-import {  withStyles, CircularProgress, Typography } from '@material-ui/core';
+import { withStyles, CircularProgress, Typography } from '@material-ui/core';
 
 const styles = theme => ({
     root: {
         marginLeft: '45%',
-        marginTop: theme.spacing.unit*12,
+        marginTop: theme.spacing.unit * 12,
     },
     text: {
-        marginLeft: -theme.spacing.unit*2,
-        marginTop: theme.spacing.unit*4,
+        marginLeft: -theme.spacing.unit * 2,
+        marginTop: theme.spacing.unit * 4,
     }
 });
 

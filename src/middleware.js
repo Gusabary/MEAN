@@ -22,3 +22,5 @@ const promiseMiddleware = store => next => action => {
 
 export default promiseMiddleware;
 
+//Source: BPM-lab, lxyl.
+

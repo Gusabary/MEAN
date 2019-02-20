@@ -12,6 +12,9 @@ const handleError = err => {
             return;
         case 500:
             alert('Email has been signed up!')
+            return;
+        default:
+            alert('Something wrong occured!')
     }
 }
 
@@ -41,7 +44,9 @@ const Posts = {
             .field('title', title)
             .field('content', content)
             .then(responseBody),
+
     show: () => requests.get('/api/posts'),
+
     update: (postId, title, content, image, token) =>
         superagent.put(API_ROOT + '/api/posts/' + postId)
             .set('Authorization', 'Bearer ' + token)
@@ -50,7 +55,8 @@ const Posts = {
             .field('title', title)
             .field('content', content)
             .then(responseBody),
-    delete: (postId,token) => 
+
+    delete: (postId, token) =>
         superagent.del(API_ROOT + '/api/posts/' + postId)
             .set('Authorization', 'Bearer ' + token)
             .then(responseBody),
@@ -60,3 +66,5 @@ export default {
     User,
     Posts,
 }
+
+//Source: BPM-lab, lxyl.
