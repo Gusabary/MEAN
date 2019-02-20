@@ -11,11 +11,15 @@ const styles = theme => ({
     },
     title: {
         marginTop: theme.spacing.unit,
-        marginLeft: theme.spacing.unit * 2,
+        marginLeft: '2%',
     },
     image: {
         marginTop: theme.spacing.unit,
-        marginLeft: theme.spacing.unit * 2,
+        marginLeft: '2%',
+        backgroundColor: theme.palette.primary.light,
+    },
+    hidden: {
+        display: 'none',
     },
     content: {
         width: '96%',
@@ -24,8 +28,9 @@ const styles = theme => ({
     },
     save: {
         marginTop: theme.spacing.unit,
-        marginLeft: theme.spacing.unit * 2,
         marginBottom: theme.spacing.unit * 3,
+        marginLeft: '2%',    
+        backgroundColor: theme.palette.primary.light,
     },
 });
 
@@ -107,9 +112,19 @@ class New extends React.Component {
                             onChange={this.handleTitleChange}
                         />
                         <br />
+                        <Button
+                            variant="contained"
+                            className={classes.image}
+                            onClick={()=>this.imagePicker.click()}
+                        >
+                            {this.props.isEnglish ? 'Pick Image' : '选择图片'}
+                        </Button>
                         <input
                             type="file"
+                            accept=".jpg,.jpeg,.png"
+                            ref={ref=>this.imagePicker=ref}
                             onChange={this.handleImageChange}
+                            className={classes.hidden}
                         />
                         <br />
                         <TextField
