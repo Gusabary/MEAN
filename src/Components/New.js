@@ -1,5 +1,5 @@
 import React from 'react'
-import { Paper, withStyles, TextField, Button } from '@material-ui/core'
+import { Paper, withStyles, TextField, Button, Typography } from '@material-ui/core'
 import { connect } from 'react-redux';
 import agent from '../agent';
 
@@ -13,9 +13,15 @@ const styles = theme => ({
         marginTop: theme.spacing.unit,
         marginLeft: '2%',
     },
-    image: {
+    imageButton: {
         marginTop: theme.spacing.unit,
         marginLeft: '2%',
+        backgroundColor: theme.palette.primary.light,
+    },
+    previewButton: {
+        marginTop: theme.spacing.unit,
+        //position: 'absolute',
+        marginLeft: '79%',
         backgroundColor: theme.palette.primary.light,
     },
     hidden: {
@@ -25,6 +31,12 @@ const styles = theme => ({
         width: '96%',
         marginTop: theme.spacing.unit,
         marginLeft: '2%',
+    },
+    preview: {
+        width: '96%',
+        marginTop: theme.spacing.unit,
+        marginLeft: '2%',
+        //height: theme.spacing.unit * 37,
     },
     save: {
         marginTop: theme.spacing.unit,
@@ -52,19 +64,29 @@ const mapDispatchToProps = dispatch => ({
         dispatch({ type: 'REDIRECTED' }),
 })
 
+const parse = content => {
+    const ReactMarkdown = require('react-markdown');
+    const splitedContent = content.split('\n');
+    return splitedContent.map(para =>
+        <p><ReactMarkdown source={para} /></p>
+    )
+}
+
 class New extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
             title: '',
             image: '',
-            content: ''
+            content: '',
+            showPreview: false,
         }
 
         this.handleTitleChange = this.handleTitleChange.bind(this);
         this.hanldeContentChange = this.hanldeContentChange.bind(this);
         this.handleImageChange = this.handleImageChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
+        this.handleClickPreview = this.handleClickPreview.bind(this);
     }
 
     handleTitleChange(event) {
@@ -77,6 +99,7 @@ class New extends React.Component {
         this.setState({
             image: event.target.files[0],
         })
+        console.log(this.state.image)
     }
 
     hanldeContentChange(event) {
@@ -98,6 +121,12 @@ class New extends React.Component {
         }
     }
 
+    handleClickPreview() {
+        this.setState({
+            showPreview: !this.state.showPreview,
+        })
+    }
+
     render() {
         const { classes } = this.props;
         return (
@@ -114,7 +143,7 @@ class New extends React.Component {
                         <br />
                         <Button
                             variant="contained"
-                            className={classes.image}
+                            className={classes.imageButton}
                             onClick={() => this.imagePicker.click()}
                         >
                             {this.props.isEnglish ? 'Pick Image' : '选择图片'}
@@ -126,16 +155,29 @@ class New extends React.Component {
                             onChange={this.handleImageChange}
                             className={classes.hidden}
                         />
+                        <Button
+                            variant="contained"
+                            onClick={this.handleClickPreview}
+                            className={classes.previewButton}
+                        >
+                            {this.state.showPreview && this.props.isEnglish && 'Writing'}
+                            {!this.state.showPreview && this.props.isEnglish && 'Preview'}
+                            {this.state.showPreview && !this.props.isEnglish && '编辑'}
+                            {!this.state.showPreview && !this.props.isEnglish && '预览'}
+                        </Button>
                         <br />
                         <TextField
                             type="text"
                             label={this.props.isEnglish ? 'Post Content' : '正文内容'}
-                            className={classes.content}
+                            className={this.state.showPreview ? classes.hidden : classes.content}
                             value={this.state.content}
                             onChange={this.hanldeContentChange}
                             multiline
                             rows="16"
                         />
+                        <Typography className={this.state.showPreview ? classes.preview : classes.hidden}>
+                            {parse(this.state.content)}
+                        </Typography>
                         <br />
                         <Button
                             variant="contained"
@@ -144,6 +186,7 @@ class New extends React.Component {
                         >
                             {this.props.isEnglish ? 'Save Post' : '保存文章'}
                         </Button>
+
                         <br />
                     </form>
                 </Paper>
