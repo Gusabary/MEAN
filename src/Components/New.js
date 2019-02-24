@@ -18,6 +18,10 @@ const styles = theme => ({
         marginLeft: '2%',
         backgroundColor: theme.palette.primary.light,
     },
+    image: {
+        width: theme.spacing.unit * 30,
+        //height: theme.spacing.unit*10,
+    },
     previewButton: {
         marginTop: theme.spacing.unit,
         //position: 'absolute',
@@ -52,6 +56,8 @@ const mapStateToProps = state => ({
     isEditing: state.posts.isEditing,
     postId: state.posts.postId,
     isEnglish: state.common.isEnglish,
+    index: state.posts.index,
+    posts:state.posts.posts,
 })
 
 const mapDispatchToProps = dispatch => ({
@@ -114,6 +120,15 @@ class New extends React.Component {
         this.props.onSubmit(title, image, content, this.props.token, this.props.isEditing, this.props.postId);
     }
 
+    componentWillMount() {
+        if (this.props.isEditing)
+            this.setState({
+                title: this.props.posts[this.props.index].title,
+                //image: this.props.posts[this.]
+                content: this.props.posts[this.props.index].content,
+            })
+    }
+
     componentWillReceiveProps(nextProps) {
         if (nextProps.redirectTo) {
             this.props.history.push(nextProps.redirectTo);
@@ -152,6 +167,7 @@ class New extends React.Component {
                             type="file"
                             accept=".jpg,.jpeg,.png"
                             ref={ref => this.imagePicker = ref}
+                            //value={this.state.image}
                             onChange={this.handleImageChange}
                             className={classes.hidden}
                         />

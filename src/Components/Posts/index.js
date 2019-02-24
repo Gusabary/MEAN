@@ -21,8 +21,8 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch => ({
     onLoad: () =>
         dispatch({ type: 'LOAD_POSTS', payload: agent.Posts.show() }),
-    onEdit: (postId) =>
-        dispatch({ type: 'EDIT_START', payload: { postId } }),
+    onEdit: (postId,index) =>
+        dispatch({ type: 'EDIT_START', payload: { postId,index } }),
     onDeleteStart: () =>
         dispatch({ type: 'DELETE_START' }),
     onDeleteEnd: () =>
@@ -77,8 +77,8 @@ class Posts extends React.Component {
         })
     }
 
-    handleClickEdit(postId) {
-        this.props.onEdit(postId);
+    handleClickEdit(postId,index) {
+        this.props.onEdit(postId,index);
     }
 
     async handleClickDelete(postId) {
@@ -116,7 +116,7 @@ class Posts extends React.Component {
                         posts={filter(posts, postsPerPage, currentPage, maxPosts)}
                         userId={userId}
                         token={token}
-                        onClickEdit={(postId) => this.handleClickEdit(postId)}
+                        onClickEdit={(postId,index) => this.handleClickEdit(postId,index)}
                         onClickDelete={(postId) => this.handleClickDelete(postId)}
                         isEnglish={isEnglish}
                     />

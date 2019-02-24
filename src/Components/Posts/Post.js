@@ -120,11 +120,11 @@ class Post extends React.Component {
                                                     <Link to="New">
                                                         <Button
                                                             className={classes.edit}
-                                                            onClick={() => this.props.onClickEdit(post._id)}
+                                                            onClick={() => this.props.onClickEdit(post._id,index)}
                                                             variant="outlined"
                                                         >
                                                             <Create className={classes.buttonIcon} />
-                                                            {this.props.isEnglish ? 'Edit' : '编辑'}
+                                                            {this.props.isEnglish ? 'Edit' : 'ç¼–è¾‘'}
                                                         </Button>
                                                     </Link>
                                                     <Button
@@ -133,7 +133,7 @@ class Post extends React.Component {
                                                         variant="outlined"
                                                     >
                                                         <Delete className={classes.buttonIcon} />
-                                                        {this.props.isEnglish ? 'Delete' : '删除'}
+                                                        {this.props.isEnglish ? 'Delete' : 'åˆ é™¤'}
                                                     </Button>
                                                 </div>
                                             )}
