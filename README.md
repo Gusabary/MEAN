@@ -31,7 +31,8 @@ Some websites and learning notes in [this repo](https://github.com/Gusabary/Wint
 - [x] Create posts when logged in, markdown supported.
 - [x] Edit and delete your posts.
 - [x] Filter posts by number per page.
-- [ ] Preview posts when creating.
+- [x] Preview posts when creating or editing.
+- [ ] Display the image when creating or editing.
 
 ### Something trivial
 
@@ -47,7 +48,7 @@ Welcome to raise an issue ~
 
 MIT
 
-##### Last-modified date: 2019.2.20, 3 p.m.
+##### Last-modified date: 2019.2.24, 1 p.m.
 
 
 
