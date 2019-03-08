@@ -17,10 +17,11 @@
 ### Run locally
 
 1. Make sure you have installed [git](https://git-scm.com/) and [Node.js](https://nodejs.org/zh-cn/), which are essential to this project running locally.
-2. `git clone` this repo and use `yarn install` to install all dependencies in `package.json`. 
-3. Use `yarn start` to run the project.
+2. Use `npm install -g yarn` to install *yarn* globally.
+3. `git clone` this repo and use `yarn install` to install all dependencies in `package.json`. 
+4. Use `yarn start` to run the project.
 
-If you want to know more about commands of `npm` and `yarn`, [this doc](https://github.com/facebook/create-react-app/blob/master/README.md) may help.
+If you want to know more about commands of *npm* and *yarn*, [this doc](https://github.com/facebook/create-react-app/blob/master/README.md) may help.
 
 Some websites and learning notes in [this repo](https://github.com/Gusabary/Winter-Vacation) can help, too.
 
